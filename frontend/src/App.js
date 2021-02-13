@@ -4,8 +4,6 @@ const App = () => {
   return (
     <>
       <h1>Welcome to my Shop! Users</h1>
-
-
     </>
   );
 }
