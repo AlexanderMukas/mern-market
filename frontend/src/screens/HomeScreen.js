@@ -1,7 +1,9 @@
 // rafce + tab
 import React from 'react';
-import products from '../products';
 import { Row, Col } from 'react-bootstrap';
+
+import products from '../products';
+import Product from '../components/Product';
 
 const HomeScreen = () => {
     return (
@@ -11,9 +13,9 @@ const HomeScreen = () => {
                 {products.map( product => (
                     <Col sm={12} md={6} lg={4} xl={3}>
 
-                        {/* <Product /> */}
+                        <Product product={product} />
 
-                        <h3>{product.name}</h3>
+                        {/* <h3>{product.name}</h3> */}
 
                     </Col>
                 ))}
