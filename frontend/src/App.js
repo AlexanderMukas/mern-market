@@ -5,15 +5,15 @@ import Footer from './components/Footer';
 const App = () => {
   return (
     <>
-    <main>
+      <main>
 
-      <Header />
+        <Header />
 
-      <h1>Welcome to my Shop! Users</h1>
-      
-      <Footer />
+        <h1>Welcome to my Shop! Users</h1>
+        
+        <Footer />
 
-    </main>
+      </main>
       
     </>
   );
