@@ -1,7 +1,8 @@
 // rafce + tab
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import products from '../products';
+// import products from '../products';
+import Rating from './Rating';
 
 const Product = ( {product} ) => {
     return (
@@ -19,12 +20,19 @@ const Product = ( {product} ) => {
 
                 <Card.Text as='div'>
                         {/* <Rating /> */}
-                        <div className='my-3'>
 
-                            {/* test variant of ration */}
+                        {/* test variant of ration 
+
+                        <div className='my-3'>
                             {product.rating} from {product.numReviews} reviews
-                            
                         </div>
+                        */}
+
+                        <Rating 
+                            value={product.rating} 
+                            text={`${product.numReviews} reviews`} 
+                        />
+
                 </Card.Text>
 
                 <Card.Text as='h3'>
