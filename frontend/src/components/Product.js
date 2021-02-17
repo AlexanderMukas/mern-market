@@ -20,7 +20,10 @@ const Product = ( {product} ) => {
                 <Card.Text as='div'>
                         {/* <Rating /> */}
                         <div className='my-3'>
+
+                            {/* test variant of ration */}
                             {product.rating} from {product.numReviews} reviews
+                            
                         </div>
                 </Card.Text>
 
