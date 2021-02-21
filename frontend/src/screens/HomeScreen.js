@@ -1,11 +1,34 @@
 // rafce + tab
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-
-import products from '../products';
 import Product from '../components/Product';
 
+// delete because use 'axios'
+// import products from '../products';
+
+import axios from 'axios';
+
+
 const HomeScreen = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect( async () => {
+        // console.log('hello')
+
+        const fetchProducts = async () => {
+            // const res = await axios.get('/api/products')
+            // res.data
+            const { data } = await axios.get('/api/products');
+
+            setProducts(data);
+        }
+
+        fetchProducts()
+
+
+    }, []);
+
     return (
         <>
             <h1>Latest products</h1>
