@@ -26,7 +26,7 @@ const ProductScreen = ( {match} ) => {
         fetchProduct()
 
 
-    }, []);
+    }, [match]);
 
 
     // find single product, params = :id in URL, backend will do it later    
