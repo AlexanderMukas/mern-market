@@ -13,11 +13,9 @@ const ProductScreen = ( {match} ) => {
     const [product, setProduct] = useState([]);
 
     useEffect( async () => {
-        // console.log('hello')
 
         const fetchProduct = async () => {
-            // const res = await axios.get('/api/products')
-            // res.data
+            
             const { data } = await axios.get(`/api/products/${match.params.id}`);
 
             setProduct(data);
