@@ -1,13 +1,3 @@
-// const express = require('express'); // commonJS
-// const app = express();
-
-// const app = require('express')();
-
-// const products = require('./data/products');
-
-// add dotenv
-// const dotenv = require('dotenv').config();
-
 import express from 'express';
 import dotenv from 'dotenv';
 import products from './data/products.js'
