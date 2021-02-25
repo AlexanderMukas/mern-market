@@ -1,8 +1,18 @@
 import express from 'express';
 import dotenv from 'dotenv';
+
+// this MongoDB connection
+import connectDB from './config/db.js';
+
+// this without MongoDB
 import products from './data/products.js'
 
 dotenv.config();
+
+
+connectDB();
+
+
 
 const app = express();
 
