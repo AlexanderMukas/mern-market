@@ -80,4 +80,4 @@ const products = [
 ]
 
 // module.exports =  products  // commonJS
-export default products;
+export default products; // ES6 syntax
