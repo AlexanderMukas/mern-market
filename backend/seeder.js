@@ -65,3 +65,10 @@ const destroyData = async () => {
         process.exit(1);
     }
 }
+
+// add argument key : " node backend/seeder.js -D "
+if(process.argv[2] === "-d") {
+    destroyData();
+} else {
+    importData();
+}
