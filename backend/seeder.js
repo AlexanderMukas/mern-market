@@ -28,6 +28,8 @@ const importData = async () => {
         await User.deleteMany();
 
         const createdUsers = await User.insertMany(users);
+        //testing
+        console.log(createdUsers + ' !!!users')
         // const adminUser = createdUsers.find(user => user.isAdmin === true)
 
         const adminUser = createdUsers[0]._id   // first item IS ADMIN
