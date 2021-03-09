@@ -8,7 +8,7 @@ import colors from 'colors';
 import connectDB from './config/db.js';
 
 // this without MongoDB
-import products from './data/products.js'
+// import products from './data/products.js' // fetch from db now
 
 dotenv.config();
 
@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
     res.send('API is running now...')
 });
 
+
+//----------------- fetch products ---------------------------
+
 app.get('/api/products', (req, res) => {
     res.json(products)
 });
@@ -33,7 +36,7 @@ app.get('/api/products/:id', (req, res) => {
     const product = products.find( prod => prod._id === req.params.id);
     res.json(product);
 });
-
+// ------------------products -------------------------------
 
 const PORT = process.env.PORT || 5000 ;
 
