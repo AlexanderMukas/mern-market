@@ -6,9 +6,8 @@ const router = express.Router();
 import Product from '../models/productModel.js';
 
 // @desc        Fetch all products
-// @route       GET /api/products
+// @route       GET /api/products/
 // @access      Public
-
 router.get(
     '/', 
     asyncHandler(async (req, res) => {
@@ -19,6 +18,9 @@ router.get(
 }));
 
 
+// @desc        Fetch single product by ID
+// @route       GET /api/products/:id
+// @access      Public
 router.get(
     '/:id', 
     asyncHandler(async (req, res) => {
