@@ -22,6 +22,13 @@ connectDB();
 
 const app = express();
 
+//simple middleware
+// app.use( (req, res, next) => {
+//     // console.log('HELLO');
+//     console.log(req.originalUrl);
+//     next();
+// });
+
 
 app.get('/', (req, res) => {
     res.send('API is running now...')
