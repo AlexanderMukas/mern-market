@@ -13,6 +13,9 @@ import connectDB from './config/db.js';
 //this with MongoDB
 import productRoutes from './routes/productRoutes.js'
 
+// add error middleWare
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+
 dotenv.config();
 
 
@@ -49,11 +52,9 @@ app.get('/', (req, res) => {
 // ------------------+products with routes+ -------------------------------
 app.use('/api/products', productRoutes);
 
-
-app.use( );
-
-
-app.use()
+// errorMiddleware
+app.use(notFound);
+app.use(errorHandler);
 
 // ------------------products with routes -------------------------------
 
