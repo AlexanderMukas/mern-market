@@ -14,7 +14,6 @@ const HomeScreen = () => {
     const [products, setProducts] = useState([]);
 
     useEffect( async () => {
-        // console.log('hello')
 
         const fetchProducts = async () => {
             // const res = await axios.get('/api/products')

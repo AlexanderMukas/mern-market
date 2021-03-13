@@ -1,14 +1,15 @@
 import express from 'express';
-import dotenv from 'dotenv';
+
 
 // add colors.js
 import colors from 'colors';
 
 // this MongoDB connection
+import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 
 // this without MongoDB
-// import products from './data/products.js' // fetch from db now
+// import products from './data/products.js' 
 
 //this with MongoDB
 import productRoutes from './routes/productRoutes.js'
