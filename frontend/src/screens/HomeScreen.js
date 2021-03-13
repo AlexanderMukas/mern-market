@@ -1,32 +1,42 @@
 // rafce + tab
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+
+import React, {useEffect} from 'react';
+
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
 
 // delete because use 'axios'
 // import products from '../products';
 
-import axios from 'axios';
+// delete axios, because we use redux
+// import axios from 'axios';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { listProducts } from '../actions/productActions.js'
 
 const HomeScreen = () => {
+    // delete, because use redux
+    // const [products, setProducts] = useState([]);
 
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+
+    const productList = useSelector(state => state.productList);
+    const { loading, error, products } = productList;
+
 
     useEffect( async () => {
+        // const fetchProducts = async () => {
+        //     // const res = await axios.get('/api/products')
+        //     // res.data
+        //     const { data } = await axios.get('/api/products');
+        //     setProducts(data);
+        // }
+        // fetchProducts()
+        dispatch( listProducts() );
+    }, [dispatch]);
 
-        const fetchProducts = async () => {
-            // const res = await axios.get('/api/products')
-            // res.data
-            const { data } = await axios.get('/api/products');
-
-            setProducts(data);
-        }
-
-        fetchProducts()
-
-
-    }, []);
+    // const products = [];
 
     return (
         <>
