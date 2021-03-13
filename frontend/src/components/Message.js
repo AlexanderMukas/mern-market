@@ -1,12 +1,21 @@
 //rafce + tab
-import React from 'react'
+import React from 'react';
+import { Alert } from 'react-bootstrap';
 
-const Message = () => {
+// two props - variant and children
+const Message = ( {variant, children}) => {
     return (
-        <div>
-            
-        </div>
+        <Alert variant={variant}>
+
+            {children}
+
+        </Alert>
     )
+}
+
+// info = blue color
+Message.defaultProps = {
+    variant: 'info'
 }
 
 export default Message
