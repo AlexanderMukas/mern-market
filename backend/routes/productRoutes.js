@@ -14,8 +14,8 @@ router.get(
         // find all products
         const products = await Product.find( {} );
 
-        res.status(401)
-        throw new Error('Not Authorized')
+        // res.status(401)
+        // throw new Error('Not Authorized')
 
         res.json(products)
 }));

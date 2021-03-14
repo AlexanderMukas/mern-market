@@ -5,7 +5,7 @@ import React, {useEffect} from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import Product from '../components/Product';
-//add Message and Loading components
+
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
