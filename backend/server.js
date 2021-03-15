@@ -29,7 +29,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-    res.send('API is running now...')
+    res.send('API in backend (EXPRESS.JS) is running...')
 });
 
 // ------------------+products with routes+ 
