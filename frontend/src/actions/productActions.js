@@ -9,6 +9,7 @@ import {
 
 export const listProducts = () => async (dispatch) => {
     try {
+        //for spinner "LOADING..."
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
         const { data } = await axios.get('/api/products');
