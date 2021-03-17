@@ -7,10 +7,6 @@ import {
     PRODUCT_DETAILS_FAIL
 } from '../constants/productConstants.js';
 
-
-
-
-
 // const initialState = {
 //     products: []
 // };
