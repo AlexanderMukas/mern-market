@@ -13,9 +13,14 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 
 const ProductScreen = ( {match} ) => {
+    const [qty, setQty] = useState(0);
+    
+    
+    
+    
     // const [product, setProduct] = useState([]);
     const dispatch = useDispatch();
-    ;
+    
 
     useEffect( async () => {
         dispatch(listProductDetails(match.params.id))
@@ -91,6 +96,14 @@ const ProductScreen = ( {match} ) => {
                                         </Row>
                                     </ListGroup.Item>
         
+
+                                    {/* for Cart implement */}
+                                    {product.countInStock > 0 && (
+                                        <ListGroup.Item>
+                                            
+                                        </ListGroup.Item>
+                                    )}
+
                                     <ListGroup.Item>
                                         <Button className='btn-block' type='button' disabled={product.countInStock === 0}>
                                             Add to Cart
