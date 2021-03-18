@@ -97,7 +97,7 @@ const ProductScreen = ( {match} ) => {
                                     </ListGroup.Item>
         
 
-                                    {/* for Cart implement */}
+                                    {/* for Cart implement - qty */}
                                     {product.countInStock > 0 && (
                                         <ListGroup.Item>
                                             <Row>
