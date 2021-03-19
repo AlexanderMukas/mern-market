@@ -12,7 +12,7 @@ import { listProductDetails } from '../actions/productActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
-const ProductScreen = ( {match} ) => {
+const ProductScreen = ( {history, match} ) => {
     const [qty, setQty] = useState(0);
     
     
@@ -26,10 +26,16 @@ const ProductScreen = ( {match} ) => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch]);
 
+    // button add to Cart handler
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`);  //redirect
+
+    }
+
+
     // const product = {}
     const productDetails = useSelector( state => state.productDetails);
     const { loading, error, product } = productDetails;
-    
     
     return (
         <>
@@ -122,7 +128,12 @@ const ProductScreen = ( {match} ) => {
                                     )}
 
                                     <ListGroup.Item>
-                                        <Button className='btn-block' type='button' disabled={product.countInStock === 0}>
+                                        <Button
+                                            onClick={addToCartHandler}
+                                            className='btn-block' 
+                                            type='button' 
+                                            disabled={product.countInStock === 0}
+                                        >
                                             Add to Cart
                                         </Button>
                                     </ListGroup.Item>
