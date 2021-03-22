@@ -34,7 +34,9 @@ const CartScreen = ( { match, location, history } ) => {
     }
 
     const checkoutHandler = () => {
-        console.log('checkout');
+        // console.log('checkout');
+        // if login => /shipping, if not => /login
+        history.push('/login?redirect=shipping')
     }
 
     return (
