@@ -11,11 +11,12 @@ import { addToCart } from '../actions/cartActions';
 // history - for redirect
 const CartScreen = ( { match, location, history } ) => {
     const productId = match.params.id;
+
     // const qty = match.params.qty;
     // location.search => ?qty=1
-
     const qty = location.search ? Number( location.search.split('=')[1] ) : 1
     // console.log(qty); 
+
     const dispatch = useDispatch();
     const cart = useSelector(state => state.cart);
     const { cartItems } = cart;
@@ -34,6 +35,7 @@ const CartScreen = ( { match, location, history } ) => {
     }
 
     const checkoutHandler = () => {
+
         // console.log('checkout');
         // if login => /shipping, if not => /login
         history.push('/login?redirect=shipping')

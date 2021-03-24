@@ -134,7 +134,8 @@ const ProductScreen = ( {history, match} ) => {
                                             type='button' 
                                             disabled={product.countInStock === 0}
                                         >
-                                            Add to Cart
+                                            Add to Cart <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+
                                         </Button>
                                     </ListGroup.Item>
         
