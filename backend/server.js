@@ -10,7 +10,8 @@ import connectDB from './config/db.js';
 // import products from './data/products.js' 
 
 //this with MongoDB
-import productRoutes from './routes/productRoutes.js'
+import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 // add error middleWare
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
@@ -19,6 +20,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// body like json
+app.use(express.json())
+
 
 //simple middleware
 // app.use( (req, res, next) => {
@@ -34,6 +39,8 @@ app.get('/', (req, res) => {
 
 // ------------------+products with routes+ 
 app.use('/api/products', productRoutes);
+
+app.use('/api/users', userRoutes);
 
 // errorMiddleware
 app.use(notFound);
