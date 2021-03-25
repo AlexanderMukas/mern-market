@@ -38,7 +38,7 @@ const CartScreen = ( { match, location, history } ) => {
 
         // console.log('checkout');
         // if login => /shipping, if not => /login
-        history.push('/login?redirect=shipping')
+        // history.push('/login?redirect=shipping')
     }
 
     return (
