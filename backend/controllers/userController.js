@@ -4,6 +4,8 @@ import generateToken from '../utils/generateToken.js';
 
 import User from '../models/userModel.js';
 
+// import bcrypt from 'bcryptjs';
+
 // @desc        Auth user & get token
 // @route       POST /api/users/login
 // @access      Public
@@ -36,6 +38,8 @@ const authUser = asyncHandler( async (req, res) => {
 // @access      Public
 const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body;
+
+    // password = bcrypt.hashSync(password, 10);
 
     const userExists = await User.findOne( { email } );  // { email : email}
 
