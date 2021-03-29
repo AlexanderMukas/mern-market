@@ -13,7 +13,10 @@ const authUser = asyncHandler( async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne( { email } );  // { email : email}
-
+    
+    // условие - если пользователь с таким email существует - проверяется пароль
+    // Если пара мейл и пароль совпадают - отправляются данные с токеном
+    
     if(user && (await user.matchPassword(password))) {
         res.json({
             _id: user._id,
