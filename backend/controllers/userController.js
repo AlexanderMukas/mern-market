@@ -4,8 +4,6 @@ import generateToken from '../utils/generateToken.js';
 
 import User from '../models/userModel.js';
 
-
-
 // @desc        Auth user & get token
 // @route       POST /api/users/login
 // @access      Public
@@ -16,7 +14,7 @@ const authUser = asyncHandler( async (req, res) => {
     
     // условие - если пользователь с таким email существует - проверяется пароль
     // Если пара мейл и пароль совпадают - отправляются данные с токеном
-    
+
     if(user && (await user.matchPassword(password))) {
         res.json({
             _id: user._id,
@@ -32,4 +30,15 @@ const authUser = asyncHandler( async (req, res) => {
 
 });
 
-export {authUser};
+
+// @desc        Get user profile
+// @route       GET /api/users/profile
+// @access      Private
+const getUserProfile = asyncHandler( async (req, res) => {
+    // const user = await User.findById(req.user._id); 
+    res.send('Success!');
+});
+
+
+
+export { authUser, getUserProfile };
