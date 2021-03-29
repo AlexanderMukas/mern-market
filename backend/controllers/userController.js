@@ -55,7 +55,8 @@ const registerUser = asyncHandler( async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id)
         })
 
     } else {
@@ -80,8 +81,7 @@ const getUserProfile = asyncHandler( async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin,
-            token: generateToken(user._id)
+            isAdmin: user.isAdmin
         });
 
     } else {
