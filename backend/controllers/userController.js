@@ -4,8 +4,6 @@ import generateToken from '../utils/generateToken.js';
 
 import User from '../models/userModel.js';
 
-// import bcrypt from 'bcryptjs';
-
 // @desc        Auth user & get token
 // @route       POST /api/users/login
 // @access      Public
@@ -39,8 +37,6 @@ const authUser = asyncHandler( async (req, res) => {
 const registerUser = asyncHandler( async (req, res) => {
     const { name, email, password } = req.body;
 
-    // password = bcrypt.hashSync(password, 10);
-
     const userExists = await User.findOne( { email } );  // { email : email}
 
     if(userExists){
@@ -64,9 +60,7 @@ const registerUser = asyncHandler( async (req, res) => {
         throw new Error('Invalid user data')
     }
     
-
 });
-
 
 // @desc        Get user profile
 // @route       GET /api/users/profile
@@ -89,9 +83,6 @@ const getUserProfile = asyncHandler( async (req, res) => {
         throw new Error('User not found...')
     }
 
-    
 });
-
-
 
 export { authUser, registerUser, getUserProfile };
