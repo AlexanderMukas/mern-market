@@ -7,5 +7,19 @@ import {
 } from '../constants/userConstants';
 
 export const login = (email, password) => async (dispatch) => {
+    try {
+        //for spinner "LOADING..."
+        dispatch({ type: USER_LOGIN_REQUEST })
 
+        const config = {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.post('/api/users/login', { email, password }, config );
+
+    } catch (error) {
+        
+    }
 }
