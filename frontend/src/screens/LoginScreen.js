@@ -18,6 +18,12 @@ const LoginScreen = () => {
 
 
 
+    // button Login or Sign In
+    const loginHandler = () => {
+        // history.push(`/cart/${match.params.id}?qty=${qty}`);  //redirect
+
+    }
+
     return (
         <>
             <Form>
