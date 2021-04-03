@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import axios from 'axios';
+// import axios from 'axios';
 // using axios
 // import products from '../products';
 
@@ -14,9 +14,6 @@ import Loader from '../components/Loader';
 
 const ProductScreen = ( {history, match} ) => {
     const [qty, setQty] = useState(1);
-    
-    
-    
     
     // const [product, setProduct] = useState([]);
     const dispatch = useDispatch();
@@ -32,8 +29,6 @@ const ProductScreen = ( {history, match} ) => {
 
     }
 
-
-    // const product = {}
     const productDetails = useSelector( state => state.productDetails);
     const { loading, error, product } = productDetails;
     
