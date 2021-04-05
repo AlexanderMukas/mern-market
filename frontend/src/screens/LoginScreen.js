@@ -15,10 +15,6 @@ const LoginScreen = () => {
 
     const dispatch = useDispatch();
 
-
-
-
-
     // button Login or Sign In
     const loginHandler = () => {
         // history.push(`/cart/${match.params.id}?qty=${qty}`);  //redirect
@@ -26,36 +22,39 @@ const LoginScreen = () => {
     }
 
     return (
-        <>
-            <Form>
+        
+        <FormContainer>
+            <h1>Sign In</h1>
+            {/* ---EMAIL--- */}
+            <Form onSubmit={submitHandler}>
+                <Form.Group controlId='email'>
+                    <Form.Label>Email Address</Form.Label>
+                    <Form.Control 
+                        type='email' 
+                        placeholder='Enter email'
+                        value={email}
+                        onChange={ (e) => setEmail(e.target.value) }
+                    >
+                    </Form.Control>
+                </Form.Group>
 
-            
-                <Row>
-                    <Col>
-                    
-                    </Col>
-                </Row>
 
-                <Row>
-                    <Col>
-                    
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col>
-                    
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col>
-                    
-                    </Col>
-                </Row>
+                {/* ---PASSWORD--- */}
+                <Form.Group controlId='password'>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control 
+                        type='text' 
+                        placeholder='Enter password'
+                        value={password}
+                        onChange={ (e) => setPassword(e.target.value)}
+                    > 
+                    </Form.Control>
+                </Form.Group>
             </Form>
             
-        </>
+        </FormContainer>
+            
+        
     )
 }
 
