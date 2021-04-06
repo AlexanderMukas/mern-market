@@ -45,16 +45,21 @@ export const login = (email, password) => async (dispatch) => {
     }
 }
 
-export const logout = () => async (dispatch) => {
-    try {
+// export const logout = () => async (dispatch) => {
+//     try {
         
-        dispatch({
-            type: USER_LOGOUT,
-        })
-        localStorage.setItem('userInfo', JSON.stringify({ }));
+//         dispatch({
+//             type: USER_LOGOUT,
+//         })
+//         localStorage.setItem('userInfo', JSON.stringify({ }));
 
 
-    } catch (error) {
-        console.log(error);
-    }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo');
+    dispatch({ type: USER_LOGOUT});
 }
