@@ -44,3 +44,17 @@ export const login = (email, password) => async (dispatch) => {
         })
     }
 }
+
+export const logout = () => async (dispatch) => {
+    try {
+        
+        dispatch({
+            type: USER_LOGOUT,
+        })
+        localStorage.setItem('userInfo', JSON.stringify({ }));
+
+
+    } catch (error) {
+        console.log(error);
+    }
+}

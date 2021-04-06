@@ -8,6 +8,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 // add redux - show userName - not sign in
 import {useDispatch, useSelector } from 'react-redux';
 
+import { logout } from '../actions/userActions';
 
 const Header = () => {
     
@@ -17,7 +18,7 @@ const Header = () => {
     const { userInfo } = userLogin;
     
     const logoutHandler = () => {
-        console.log('logout');
+        dispatch( logout() );
     }
     
     
