@@ -9,16 +9,22 @@ import FormContainer from '../components/FormContainer';
 
 import { login } from '../actions/userActions';
 
-const LoginScreen = () => {
+const LoginScreen = ( {location} ) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const redirect = location.search ? location.search.split('=')[1] : '/' ;
     const dispatch = useDispatch();
 
     // button Login or Sign In
     const loginHandler = () => {
         // history.push(`/cart/${match.params.id}?qty=${qty}`);  //redirect
 
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        // DISPATCH LOGIN
     }
 
     return (
