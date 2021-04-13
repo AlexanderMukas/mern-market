@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-//add reducers
+//add all reducers for combine in ONE summaru REDUCER
 import { productListReducer, productDetailsReducer } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import { 
