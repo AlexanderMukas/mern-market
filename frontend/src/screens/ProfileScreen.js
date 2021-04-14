@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 
 import { getUserDetails } from '../actions/userActions';
 
-const ProfileScreen = ( {location, history} ) => {
+const ProfileScreen = ( { history } ) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
