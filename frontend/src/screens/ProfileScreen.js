@@ -22,6 +22,7 @@ const ProfileScreen = ( { history } ) => {
     const userDetails = useSelector(state => state.userDetails);
     const { loading, error, user } = userDetails;
 
+    //get userLogin -> userInfo state
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
     
