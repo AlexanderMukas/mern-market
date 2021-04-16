@@ -28,11 +28,14 @@ const ProfileScreen = ( { history } ) => {
     
     useEffect( () => {
         if(!userInfo) {
+            // если не залогинились -> /login
             history.push('/login')
         } else {
             if(!user.name) {
                 dispatch( getUserDetails('profile'))
             } else {
+
+                // если залогинились, то данные подтягиваются
                 setName(user.name);
                 setEmail(user.email);
             }
