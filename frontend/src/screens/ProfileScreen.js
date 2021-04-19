@@ -65,7 +65,7 @@ const ProfileScreen = ( { history } ) => {
 
             { message && <Message variant='danger'>{message}</Message>}
             { error && <Message variant='danger'>{error}</Message> }
-            { success && <Message variant='success'>{success}</Message> }
+            { success && <Message variant='success'>Profile Updated!</Message> }
             { loading && <Loader /> }
 
             <Form onSubmit={submitHandler}>
