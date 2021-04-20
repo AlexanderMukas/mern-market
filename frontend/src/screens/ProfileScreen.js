@@ -39,7 +39,6 @@ const ProfileScreen = ( { history } ) => {
             if(!user.name) {
                 dispatch( getUserDetails('profile'))
             } else {
-
                 // если залогинились, то данные подтягиваются
                 setName(user.name);
                 setEmail(user.email);
@@ -124,12 +123,9 @@ const ProfileScreen = ( { history } ) => {
                 </Button>
                 
                 <h3>
-                { success && <Message variant='success'>Profile Updated!</Message> }
+                    { success && <Message variant='success'>Profile Updated!</Message> }
                 </h3>
-                    
-                
-                
-
+            
             </Form>
         </Col>
 
