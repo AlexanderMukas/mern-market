@@ -3,7 +3,7 @@ import React from 'react'
 const ShippingScreen = () => {
     return (
         <div>
-           Shipping 
+           Shipping Page
         </div>
     )
 }
