@@ -10,7 +10,7 @@ import FormContainer from '../components/FormContainer';
 const ShippingScreen = () => {
     return (
         <div>
-           Shipping Page
+           Shipping Page here...
         </div>
     )
 }
