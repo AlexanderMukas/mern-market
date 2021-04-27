@@ -6,6 +6,9 @@ import FormContainer from '../components/FormContainer';
 
 const ShippingScreen = ( { history } ) => {
     const [address, useAddress] = useState('');
+    const [city, useCity] = useState('');
+    const [postalCode, usePostalCode] = useState('');
+    const [country, useCountry] = useState('');
     
     return (
         <div>
