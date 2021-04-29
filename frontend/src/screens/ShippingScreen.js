@@ -10,8 +10,9 @@ const ShippingScreen = ( { history } ) => {
     const [postalCode, setPostalCode] = useState(0);
     const [country, setCountry] = useState('');
     
-    const submitHandler = () => {
-        console.log('SUBMIT');
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log('submit');
     }
 
     return (
@@ -25,6 +26,7 @@ const ShippingScreen = ( { history } ) => {
                         type='text' 
                         placeholder='Enter city address'
                         value={address}
+                        required
                         onChange={ (e) => setAddress(e.target.value) }
                     >
                     </Form.Control>
@@ -68,7 +70,7 @@ const ShippingScreen = ( { history } ) => {
                 </Form.Group>
 
                 <Button type='submit' variant='primary'>
-                    Confirm
+                    Continue
                 </Button>
 
            </Form>
