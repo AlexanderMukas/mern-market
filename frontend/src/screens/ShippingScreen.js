@@ -11,9 +11,9 @@ const ShippingScreen = ( { history } ) => {
     const [country, useCountry] = useState('');
     
     return (
-        <div>
-           Shipping Page here...
-        </div>
+        <FormContainer>
+           Shipping
+        </FormContainer>
     )
 }
 
