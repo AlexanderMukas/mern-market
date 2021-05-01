@@ -34,12 +34,10 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
 }
 
 export const saveShippingAddress = (data) => async (dispatch) => {
-    // const { data } = await axios.get(`/api/products/${id}`);
-
     dispatch({
         type: CART_SAVE_SHIPPING_ADDRESS,
         payload: data
     })
 
-    localStorage.setItem('cartItems', JSON.stringify( getState().cart.cartItems ));
+    localStorage.setItem('shippingAddress', JSON.stringify( data ));
 }
