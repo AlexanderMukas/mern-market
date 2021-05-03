@@ -33,6 +33,7 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
     localStorage.setItem('cartItems', JSON.stringify( getState().cart.cartItems ));
 }
 
+// save from shipping page
 export const saveShippingAddress = (data) => async (dispatch) => {
     dispatch({
         type: CART_SAVE_SHIPPING_ADDRESS,
