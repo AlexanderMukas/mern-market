@@ -40,7 +40,7 @@ const shippingAddressFromStorage = localStorage.getItem('shippingAddress')
     : {}
 
 
-
+// global init state of react app
 const initialState = {
     cart: { 
         cartItems: cartItemsFromStorage, 
