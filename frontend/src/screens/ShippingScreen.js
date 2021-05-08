@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 
 const ShippingScreen = ( { history } ) => {
+    const cart = '';
+
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [postalCode, setPostalCode] = useState(0);
