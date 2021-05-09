@@ -6,6 +6,8 @@ import FormContainer from '../components/FormContainer';
 
 import { saveShippingAddress } from '../actions/cartActions';
 
+// shipping - delivery
+
 const ShippingScreen = ( { history } ) => {
     // get shippingAddress from Store 
     const cart = useSelector(state => state.cart);
