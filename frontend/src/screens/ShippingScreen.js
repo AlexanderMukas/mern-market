@@ -10,6 +10,7 @@ import { saveShippingAddress } from '../actions/cartActions';
 
 const ShippingScreen = ( { history } ) => {
     // get shippingAddress from Store 
+    // подтягивается адрес доставки из сохраненных данных в Store
     const cart = useSelector(state => state.cart);
     const { shippingAddress } = cart;
 
