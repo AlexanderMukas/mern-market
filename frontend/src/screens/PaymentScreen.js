@@ -16,13 +16,11 @@ const PaymentScreen = ( { history } ) => {
     const { shippingAddress } = cart;
 
     if(!shippingAddress){
-        
+        history.push('/shipping')
     }
 
-    const [address, setAddress] = useState(shippingAddress.address);
-    const [city, setCity] = useState(shippingAddress.city);
-    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    const [country, setCountry] = useState(shippingAddress.country);
+    // const [paymentMethod, setPaymentMethod] = useState(savePaymentMethod);
+    const [paymentMethod, setPaymentMethod] = useState('PayPal');
     
     const dispatch = useDispatch();
 
@@ -30,17 +28,17 @@ const PaymentScreen = ( { history } ) => {
         e.preventDefault();
         
         // console.log('submit');
-        dispatch( saveShippingAddress({ address, city, postalCode, country }) );
-        history.push('/payment');
+        dispatch( savePaymentMethod(paymentMethod) );
+        history.push('/placeorder');
         
     }
 
     return (
         <FormContainer>
 
-            <CheckoutSteps step1 step2 />
+            <CheckoutSteps step1 step2 step3 />
 
-           <h1>Shipping</h1>
+           <h1>Payment Method</h1>
            <Form onSubmit={submitHandler}>
                 {/* ---ADDRESS--- */}
                 <Form.Group controlId='address'>
