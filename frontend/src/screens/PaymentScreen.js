@@ -53,18 +53,6 @@ const PaymentScreen = ( { history } ) => {
                     </Form.Control>
                 </Form.Group>
 
-                {/* ---CITY--- */}
-                <Form.Group controlId='city'>
-                    <Form.Label>City</Form.Label>
-                    <Form.Control 
-                        type='text' 
-                        placeholder='Enter city'
-                        value={city}
-                        onChange={ (e) => setCity(e.target.value) }
-                    >
-                    </Form.Control>
-                </Form.Group>
-
 
                 {/* ---POSTALCODE--- */}
                 <Form.Group controlId='postalCode'>
