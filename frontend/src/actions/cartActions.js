@@ -42,3 +42,7 @@ export const saveShippingAddress = (data) => async (dispatch) => {
 
     localStorage.setItem('shippingAddress', JSON.stringify( data ));
 }
+
+export const savePaymentMethod = () => async (dispatch) => {
+    
+}
