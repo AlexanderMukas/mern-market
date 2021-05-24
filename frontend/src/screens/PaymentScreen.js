@@ -55,6 +55,7 @@ const PaymentScreen = ( { history } ) => {
                     >
                     </Form.Check>
 
+                    {/* second payment method */}
                     <Form.Check 
                         type='radio' 
                         label='Stripe' 
