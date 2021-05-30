@@ -6,10 +6,16 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 
 const PlaceOrderScreen = () => {
+    
+    const cart = useSelector( state => state.cart);
+
+    
+    
+    
     return (
-        <div>
+        <>
             
-        </div>
+        </>
     )
 }
 
