@@ -8,9 +8,6 @@ import CheckoutSteps from '../components/CheckoutSteps';
 const PlaceOrderScreen = () => {
     
     const cart = useSelector( state => state.cart);
-
-    
-    
     
     return (
         <>
@@ -20,6 +17,17 @@ const PlaceOrderScreen = () => {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Shipping</h2>
+                            <p>
+                                <strong>Address</strong>
+                                {cart.shippingAddress.address},
+                                {cart.shippingAddress.city},
+                                {cart.shippingAddress.postalCode}
+
+
+
+
+
+                            </p>
                         </ListGroup.Item>
                     </ListGroup>
                 </Col>
