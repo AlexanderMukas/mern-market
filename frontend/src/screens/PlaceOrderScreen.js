@@ -25,6 +25,13 @@ const PlaceOrderScreen = () => {
                                 {cart.shippingAddress.country}
                             </p>
                         </ListGroup.Item>
+
+                        <ListGroup.Item>
+                            <h2>Payment Method</h2>
+                            <strong>Method: </strong>
+                            {cart.paymentMethod}
+
+                        </ListGroup.Item>
                     </ListGroup>
                 </Col>
             </Row>
