@@ -10,6 +10,10 @@ const PlaceOrderScreen = () => {
     
     const cart = useSelector( state => state.cart);
     
+
+    const placeOrderHandler = () => {
+        console.log('place order');
+    }
     return (
         <>
             <CheckoutSteps step1 step2 step3 step4 />
@@ -94,6 +98,22 @@ const PlaceOrderScreen = () => {
                                     <Col>Tax</Col>
                                     <Col>${cart.taxPrice}</Col>
                                 </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>Total</Col>
+                                    <Col>${cart.totalPrice}</Col>
+                                </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                                <Button
+                                  type='button'
+                                  className='btn-block'
+                                  disabled={cart.cartItems === 0}
+                                  onClick={placeOrderHandler}
+                                >
+                                    Place Order
+                                </Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
