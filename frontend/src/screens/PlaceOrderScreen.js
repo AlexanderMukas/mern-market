@@ -32,6 +32,18 @@ const PlaceOrderScreen = () => {
                             {cart.paymentMethod}
 
                         </ListGroup.Item>
+
+                        <ListGroup.Item>
+                            <h2>Order Items</h2>
+                            {cart.cartItems.length === 0 
+                            ? <Message>Your Cart is empty</Message>
+                            : (
+                                <ListGroup variant='flush'>
+                                    <ListGroup.Item></ListGroup.Item>
+                                </ListGroup>
+                            )}
+
+                        </ListGroup.Item>
                     </ListGroup>
                 </Col>
             </Row>
