@@ -4,6 +4,7 @@ import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { Link } from 'react-router-dom';
 
 const PlaceOrderScreen = () => {
     
@@ -39,7 +40,31 @@ const PlaceOrderScreen = () => {
                             ? <Message>Your Cart is empty</Message>
                             : (
                                 <ListGroup variant='flush'>
-                                    <ListGroup.Item></ListGroup.Item>
+                                    {cart.cartItems.map( (item, index)=> (
+                                        <ListGroup.Item key={index}>
+                                            <Row>
+                                                {/* Image column */}
+                                                <Col md={1}>
+                                                    <Image src={item.image} alt={item.name} fluid rounded />
+                                                </Col>
+                                                
+                                                {/* Product name and link column */}
+                                                <Col>
+                                                    <Link to={`/product/${item.product}`}>
+                                                        {item.name}
+                                                    </Link>
+                                                </Col>
+                                                
+                                                {/* Qty and price column */}
+                                                <Col md={4}>
+                                                    {item.qty} x ${item.price} = ${item.qty * item.price}
+                                                </Col>
+
+                                            </Row>
+                                            
+                                        </ListGroup.Item>
+                                    ))
+                                    }
                                 </ListGroup>
                             )}
 
