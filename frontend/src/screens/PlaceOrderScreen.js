@@ -10,6 +10,8 @@ const PlaceOrderScreen = () => {
     
     const cart = useSelector( state => state.cart);
     
+    // calculate prices
+    
 
     const placeOrderHandler = () => {
         console.log('place order');
