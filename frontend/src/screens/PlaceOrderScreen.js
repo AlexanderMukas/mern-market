@@ -14,7 +14,12 @@ const PlaceOrderScreen = () => {
     cart.itemsPrice = cart.cartItems.reduce( 
         (acc, item) => acc + item.price * item.qty,
         0
-    )
+    );
+
+    cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 100;
+    
+    //fixed tax 15% for some USA state
+    cart.taxPrice = Number( (0.15 * cart.itemsPrice).toFixed(2));
 
 
     const placeOrderHandler = () => {
