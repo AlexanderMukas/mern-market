@@ -11,7 +11,11 @@ const PlaceOrderScreen = () => {
     const cart = useSelector( state => state.cart);
     
     // calculate prices
-    
+    cart.itemsPrice = cart.cartItems.reduce( 
+        (acc, item) => acc + item.price * item.qty,
+        0
+    )
+
 
     const placeOrderHandler = () => {
         console.log('place order');
