@@ -30,7 +30,8 @@ const PlaceOrderScreen = () => {
         Number(cart.shippingPrice) + 
         Number(cart.taxPrice)
     ).toFixed(2);
-
+    
+    // button function 
     const placeOrderHandler = () => {
         console.log('place order');
     }
