@@ -7,7 +7,8 @@ import Order from '../models/orderModel';
 const addOrderItems = asyncHandler( async (req, res) => {
     
     // get data from request url
-    const { orderItems,
+    const { 
+        orderItems,
         shippingAddress, 
         paymentMethod, 
         itemsPrice,
@@ -22,7 +23,19 @@ const addOrderItems = asyncHandler( async (req, res) => {
         return
     } else {
         const order = new Order({
+            orderItems,
+            user: req.user._id,
+            shippingAddress, 
+            paymentMethod, 
+            itemsPrice,
+            taxPrice,
+            shippingPrice,
+            totalPrice
+        });
 
-        })
+        // save to database mongoDB
+        const createdOrder = await order.save();
+
+        res.status(201).json( createdOrder );
     }
 });
