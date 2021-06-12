@@ -4,6 +4,7 @@ const router = express.Router();
 //add controller
 import addOrderItems from '../controllers/orderController';
 
+// add protect
 import { protect } from '../middleware/authMiddleware.js';
 
 router.route('/').post(registerUser);
