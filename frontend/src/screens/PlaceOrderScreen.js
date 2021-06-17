@@ -14,6 +14,8 @@ const PlaceOrderScreen = () => {
         return (Math.round(num * 100) / 100).toFixed(2) 
     }
 
+    const dispatch = useDispatch();
+
     const cart = useSelector( state => state.cart);
     
     // calculate prices
@@ -33,9 +35,27 @@ const PlaceOrderScreen = () => {
         Number(cart.taxPrice)
     ).toFixed(2);
     
-    // button function 
+    // button function  !!!!!!!!!!!!
     const placeOrderHandler = () => {
-        console.log('place order');
+        // console.log('place order');
+        e.preventDefault();
+        dispatch( createOrder({
+            // user: ,
+            orderItems: cart.orderItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            // paymentResult: ,
+            itemsPrice: cart.itemsPrice,  //not in model
+            taxPrice: cart.taxPrice,
+            shippingPrice: cart.shippingPrice,
+            totalPrice: cart.totalPrice,  //not in model
+            // isPaid: ,
+            // paidAt: ,
+            // isDelivered: ,
+            // deliveredAt: 
+        }));
+
+
     }
     return (
         <>
