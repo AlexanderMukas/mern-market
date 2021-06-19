@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -35,6 +35,12 @@ const PlaceOrderScreen = () => {
         Number(cart.taxPrice)
     ).toFixed(2);
     
+    // get order, success and error var from state
+    const orderCreate = useSelector( state => state.orderCreate )
+    const { order, success, error } = orderCreate; 
+
+    
+
     // button function  !!!!!!!!!!!!
     const placeOrderHandler = () => {
         // console.log('place order');
