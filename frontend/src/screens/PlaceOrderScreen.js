@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import { createOrder } from '../actions/orderActions';
 
-const PlaceOrderScreen = () => {
+const PlaceOrderScreen = ( { history } ) => {
     
     const addDecimals = (num) => {
         return (Math.round(num * 100) / 100).toFixed(2) 
@@ -39,7 +39,11 @@ const PlaceOrderScreen = () => {
     const orderCreate = useSelector( state => state.orderCreate )
     const { order, success, error } = orderCreate; 
 
-    
+    useEffect( () => {
+        if(success){
+            history.push(`/order/${order._id}`)
+        }
+    }, [history, success])
 
     // button function  !!!!!!!!!!!!
     const placeOrderHandler = () => {
