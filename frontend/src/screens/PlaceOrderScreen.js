@@ -48,7 +48,7 @@ const PlaceOrderScreen = ( { history } ) => {
     // button function  !!!!!!!!!!!!
     const placeOrderHandler = () => {
         // console.log('place order');
-        e.preventDefault();
+        // e.preventDefault();
         dispatch( createOrder({
             // user: ,
             orderItems: cart.orderItems,
