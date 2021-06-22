@@ -45,10 +45,9 @@ const PlaceOrderScreen = ( { history } ) => {
         }
     }, [history, success])
 
-    // button function  !!!!!!!!!!!!
+    // button function  !
     const placeOrderHandler = () => {
         // console.log('place order');
-        // e.preventDefault();
         dispatch( createOrder({
             // user: ,
             orderItems: cart.orderItems,
@@ -159,7 +158,7 @@ const PlaceOrderScreen = ( { history } ) => {
                                 </Row>
                             </ListGroup.Item>
 
-                            {/* error */}
+                            {/* error message */}
                             <ListGroup.Item>
                                 {error && <Message variant='danger'>{error}</Message> }
                             </ListGroup.Item>

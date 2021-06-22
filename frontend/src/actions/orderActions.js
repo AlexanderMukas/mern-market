@@ -10,7 +10,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         
         dispatch({ type: ORDER_CREATE_REQUEST })
 
-        // this information from Redux from ALL STATE
+        // this information from Redux store from ALL STATE
         const { userLogin: { userInfo } } = getState();
 
         const config = {
