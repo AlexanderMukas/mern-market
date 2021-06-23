@@ -13,6 +13,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         // this information from Redux store from ALL STATE
         const { userLogin: { userInfo } } = getState();
 
+        // add token on config
         const config = {
             headers: {
                 'Content-type': 'application/json',
