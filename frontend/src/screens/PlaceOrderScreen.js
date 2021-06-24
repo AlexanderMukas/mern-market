@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
+
+// add components
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
+
 import { Link } from 'react-router-dom';
 
 import { createOrder } from '../actions/orderActions';
