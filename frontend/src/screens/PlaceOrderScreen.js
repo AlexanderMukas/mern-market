@@ -43,29 +43,43 @@ const PlaceOrderScreen = ( { history } ) => {
     const { order, success, error } = orderCreate; 
 
     useEffect( () => {
-        if(success){
-            history.push(`/order/${order._id}`)
+        if(success) {
+          history.push(`/order/${order._id}`)
         }
+        // eslint-disable-next-line
     }, [history, success])
 
     // button function  !
-    const placeOrderHandler = () => {
-        // console.log('place order');
-        dispatch( createOrder({
+    // const placeOrderHandler = () => {
+        
+    //     dispatch( createOrder({
             // user: ,
-            orderItems: cart.orderItems,
-            shippingAddress: cart.shippingAddress,
-            paymentMethod: cart.paymentMethod,
+            // orderItems: cart.orderItems,
+            // shippingAddress: cart.shippingAddress,
+            // paymentMethod: cart.paymentMethod,
             // paymentResult: ,
-            itemsPrice: cart.itemsPrice,  //not in model
-            taxPrice: cart.taxPrice,
-            shippingPrice: cart.shippingPrice,
-            totalPrice: cart.totalPrice,  //not in model
+            // itemsPrice: cart.itemsPrice,  //not in model
+            // taxPrice: cart.taxPrice,
+            // shippingPrice: cart.shippingPrice,
+            // totalPrice: cart.totalPrice,  //not in model
             // isPaid: ,
             // paidAt: ,
             // isDelivered: ,
             // deliveredAt: 
-        }));
+        // }));
+
+
+        const placeOrderHandler = () => {
+            
+            dispatch( createOrder({
+                orderItems: cart.orderItems,
+                shippingAddress: cart.shippingAddress,
+                paymentMethod: cart.paymentMethod,
+                itemsPrice: cart.itemsPrice, 
+                taxPrice: cart.taxPrice,
+                shippingPrice: cart.shippingPrice,
+                totalPrice: cart.totalPrice  
+            }));
 
 
     }
