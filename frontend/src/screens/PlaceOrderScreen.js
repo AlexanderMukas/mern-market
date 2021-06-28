@@ -68,7 +68,7 @@ const PlaceOrderScreen = ( { history } ) => {
             // deliveredAt: 
         // }));
 
-
+        // save Order on MongoDB
         const placeOrderHandler = () => {
             
             dispatch( createOrder({
