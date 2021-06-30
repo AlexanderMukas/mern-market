@@ -20,7 +20,8 @@ export const createOrder = (order) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-
+        
+        // Database POST QUERY
         //pass user in "POST request" in Mongo
         const { data } = await axios.post(
             `/api/orders`,
