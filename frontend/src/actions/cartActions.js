@@ -7,6 +7,7 @@ import { CART_ADD_ITEM,
 
 // id товара и кол-во добавляется к заказу
 export const addToCart = (id, qty) => async (dispatch, getState) => {
+    // по id товара находим в базе и с кол-вом добавляем к заказу
     const { data } = await axios.get(`/api/products/${id}`);
 
     dispatch({
