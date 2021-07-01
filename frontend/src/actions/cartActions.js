@@ -5,6 +5,7 @@ import { CART_ADD_ITEM,
          CART_SAVE_PAYMENT_METHOD
 } from '../constants/cartConstants';
 
+// id товара и кол-во добавляется к заказу
 export const addToCart = (id, qty) => async (dispatch, getState) => {
     const { data } = await axios.get(`/api/products/${id}`);
 
