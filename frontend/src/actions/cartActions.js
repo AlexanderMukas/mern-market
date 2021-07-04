@@ -7,6 +7,7 @@ import { CART_ADD_ITEM,
 
 // id товара и кол-во добавляется к заказу
 export const addToCart = (id, qty) => async (dispatch, getState) => {
+
     // по id товара находим в базе и с кол-вом добавляем к заказу
     const { data } = await axios.get(`/api/products/${id}`);
 
@@ -46,6 +47,7 @@ export const saveShippingAddress = (data) => async (dispatch) => {
     localStorage.setItem('shippingAddress', JSON.stringify( data ));
 }
 
+// сохранение типа оплаты
 export const savePaymentMethod = (data) => async (dispatch) => {
     dispatch({
         type: CART_SAVE_PAYMENT_METHOD,
