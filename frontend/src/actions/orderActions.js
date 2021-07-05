@@ -5,6 +5,7 @@ import {
     ORDER_CREATE_FAIL
 } from '../constants/orderConstants';
 
+// создание заказа
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
         
