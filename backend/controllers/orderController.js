@@ -1,4 +1,6 @@
 import asyncHandler from 'express-async-handler';
+
+//MongoDB models
 import Order from '../models/orderModel.js';
 
 // @desc        Create new order
@@ -47,9 +49,8 @@ const addOrderItems = asyncHandler( async (req, res) => {
 const getOrderById = asyncHandler( async (req, res) => {
     
     const order = await Order.findById(req.params.id).populate('user', 'name email');
-
     console.log(order);
-    
+
     if(order){
         res.json(order);
     } else {
