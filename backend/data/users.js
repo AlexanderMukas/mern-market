@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 
+// some simple users for MongoDB database
 const users = [
     {
         name: 'Admin User',
