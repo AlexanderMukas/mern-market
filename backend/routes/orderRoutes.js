@@ -6,6 +6,7 @@ import { addOrderItems, getOrderById } from '../controllers/orderController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
 // add protect middleware in route
+// url/orders/
 router.route('/').post(protect, addOrderItems);
 router.route('/:id').get(protect, getOrderById);
 
