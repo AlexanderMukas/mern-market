@@ -52,7 +52,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
 // order details
 
 // создание заказа
-export const detailsOrder = (id) => async (dispatch, getState) => {
+export const getOrderDetails = (id) => async (dispatch, getState) => {
     try {
 
         //for spinner "LOADING..."
@@ -61,10 +61,10 @@ export const detailsOrder = (id) => async (dispatch, getState) => {
         // this information from Redux store from ALL STATE
         const { userLogin: { userInfo } } = getState();
 
-        // add token on config
+        // add token on config, GET request not need Content-type!!!
         const config = {
             headers: {
-                'Content-type': 'application/json',
+                // 'Content-type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
