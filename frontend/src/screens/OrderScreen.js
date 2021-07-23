@@ -33,27 +33,27 @@ const OrderScreen = ( { match } ) => {
                             <h2>Shipping</h2>
                             <p>
                                 <strong>Address</strong>
-                                {cart.shippingAddress.address},
-                                {cart.shippingAddress.city},
-                                {cart.shippingAddress.postalCode},
-                                {cart.shippingAddress.country}
+                                {order.shippingAddress.address},
+                                {order.shippingAddress.city},
+                                {order.shippingAddress.postalCode},
+                                {order.shippingAddress.country}
                             </p>
                         </ListGroup.Item>
 
                         <ListGroup.Item>
                             <h2>Payment Method</h2>
                             <strong>Method: </strong>
-                            {cart.paymentMethod}
+                            {order.paymentMethod}
 
                         </ListGroup.Item>
 
                         <ListGroup.Item>
                             <h2>Order Items</h2>
-                            {cart.cartItems.length === 0 
-                            ? <Message>Your Cart is empty</Message>
+                            {order.orderItems.length === 0 
+                            ? <Message>Order is empty</Message>
                             : (
                                 <ListGroup variant='flush'>
-                                    {cart.cartItems.map( (item, index)=> (
+                                    {order.orderItems.map( (item, index)=> (
                                         <ListGroup.Item key={index}>
                                             <Row>
                                                 {/* Image column */}
@@ -93,19 +93,19 @@ const OrderScreen = ( { match } ) => {
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Items</Col>
-                                    <Col>${cart.itemsPrice}</Col>
+                                    <Col>${order.itemsPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Shipping</Col>
-                                    <Col>${cart.shippingPrice}</Col>
+                                    <Col>${order.shippingPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Tax</Col>
-                                    <Col>${cart.taxPrice}</Col>
+                                    <Col>${order.taxPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
@@ -114,23 +114,7 @@ const OrderScreen = ( { match } ) => {
                                     <Col>${cart.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-
-                            {/* error message */}
-                            <ListGroup.Item>
-                                {error && <Message variant='danger'>{error}</Message> }
-                            </ListGroup.Item>
                             
-
-                            <ListGroup.Item>
-                                <Button
-                                  type='button'
-                                  className='btn-block'
-                                  disabled={cart.cartItems === 0}
-                                  onClick={placeOrderHandler}
-                                >
-                                    Place Order
-                                </Button>
-                            </ListGroup.Item>
                         </ListGroup>
                     </Card>
 
