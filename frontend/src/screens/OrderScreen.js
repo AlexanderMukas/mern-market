@@ -6,7 +6,9 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 
 import Message from '../components/Message';
 
-const OrderScreen = () => {
+import { getOrderDetails } from '../actions/orderActions';
+
+const OrderScreen = ( { history, match } ) => {
     return (
         <div>
             
