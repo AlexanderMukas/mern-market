@@ -36,8 +36,8 @@ const App = () => {
 
             <Route path='/shipping' component={ShippingScreen} />
             <Route path='/placeorder' component={PlaceOrderScreen} />
-            
-            <Route path='/orders/:id' component={OrderScreen} />
+
+            <Route path='/order/:id' component={OrderScreen} />
 
             <Route path='/payment' component={PaymentScreen} />
 
