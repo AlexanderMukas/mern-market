@@ -22,18 +22,19 @@ const OrderScreen = ( { match } ) => {
 
     useEffect( () => {
         dispatch(getOrderDetails(orderId))
-    }, [orderId])
-
+    }, [])
 
     // calculate prices
-    const addDecimals = (num) => {
-        return (Math.round(num * 100) / 100).toFixed(2) 
+    if(!loading){
+        const addDecimals = (num) => {
+            return (Math.round(num * 100) / 100).toFixed(2) 
+        }
+    
+        order.itemsPrice = addDecimals(order.orderItems.reduce( 
+            (acc, item) => acc + item.price * item.qty,
+            0
+        ));
     }
-
-    order.itemsPrice = addDecimals(order.orderItems.reduce( 
-        (acc, item) => acc + item.price * item.qty,
-        0
-    ));
     
     order.shippingPrice = addDecimals(order.itemsPrice > 100 ? 0 : 100 )
     
