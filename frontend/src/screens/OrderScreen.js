@@ -34,19 +34,18 @@ const OrderScreen = ( { match } ) => {
             (acc, item) => acc + item.price * item.qty,
             0
         ));
+
+        order.shippingPrice = addDecimals(order.itemsPrice > 100 ? 0 : 100 )
+
+        //fixed tax 15% for some USA state
+        order.taxPrice = addDecimals( Number( (0.15 * order.itemsPrice).toFixed(2)) );
+
+        order.totalPrice = ( 
+            Number(order.itemsPrice) + 
+            Number(order.shippingPrice) + 
+            Number(order.taxPrice)
+        ).toFixed(2);
     }
-    
-    order.shippingPrice = addDecimals(order.itemsPrice > 100 ? 0 : 100 )
-    
-    //fixed tax 15% for some USA state
-    order.taxPrice = addDecimals( Number( (0.15 * order.itemsPrice).toFixed(2)) );
-
-    order.totalPrice = ( 
-        Number(order.itemsPrice) + 
-        Number(order.shippingPrice) + 
-        Number(order.taxPrice)
-    ).toFixed(2);
-
     
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <> 
         <h1>Order: {order._id}</h1>
@@ -55,6 +54,8 @@ const OrderScreen = ( { match } ) => {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Shipping</h2>
+                            <strong>Name: </strong> {order.user.name},
+                            <a href={`mailto:${order.user.email}`}> {order.user.email}</a>
                             <p>
                                 <strong>Address</strong>
                                 {order.shippingAddress.address},
