@@ -14,8 +14,6 @@ const OrderScreen = ( { match } ) => {
     const orderId = match.params.id;
 
     const dispatch = useDispatch();
-
-    const cart = useSelector( state => state.cart);
     
     const orderDetails = useSelector( state => state.orderDetails )
     const { order, loading, error } = orderDetails; 
@@ -24,7 +22,7 @@ const OrderScreen = ( { match } ) => {
         dispatch(getOrderDetails(orderId))
     }, [])
 
-    // calculate prices
+    // calculate prices on Order Screen
     if(!loading){
         const addDecimals = (num) => {
             return (Math.round(num * 100) / 100).toFixed(2) 
@@ -39,7 +37,8 @@ const OrderScreen = ( { match } ) => {
 
         //fixed tax 15% for some USA state
         order.taxPrice = addDecimals( Number( (0.15 * order.itemsPrice).toFixed(2)) );
-
+        
+        // toFixed - 0.00 price
         order.totalPrice = ( 
             Number(order.itemsPrice) + 
             Number(order.shippingPrice) + 
