@@ -20,7 +20,7 @@ const OrderScreen = ( { match } ) => {
 
     useEffect( () => {
         dispatch(getOrderDetails(orderId))
-    }, [])
+    }, [dispatch, orderId])
 
     //// calculate prices on Order Screen
     // fixed tax 15% for some USA state : 0.15
