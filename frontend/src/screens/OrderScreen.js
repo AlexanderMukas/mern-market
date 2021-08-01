@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,23 +22,19 @@ const OrderScreen = ( { match } ) => {
         dispatch(getOrderDetails(orderId))
     }, [])
 
-    // calculate prices on Order Screen
+    //// calculate prices on Order Screen
+    // fixed tax 15% for some USA state : 0.15
+    // toFixed - 0.00 price
     if(!loading){
         const addDecimals = (num) => {
             return (Math.round(num * 100) / 100).toFixed(2) 
         }
-    
         order.itemsPrice = addDecimals(order.orderItems.reduce( 
             (acc, item) => acc + item.price * item.qty,
             0
         ));
-
         order.shippingPrice = addDecimals(order.itemsPrice > 100 ? 0 : 100 )
-
-        //fixed tax 15% for some USA state
         order.taxPrice = addDecimals( Number( (0.15 * order.itemsPrice).toFixed(2)) );
-        
-        // toFixed - 0.00 price
         order.totalPrice = ( 
             Number(order.itemsPrice) + 
             Number(order.shippingPrice) + 
