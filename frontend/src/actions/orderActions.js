@@ -96,6 +96,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     }
 }
 
+// оплата заказа
 export const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
     try {
 
@@ -104,7 +105,6 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
 
         // this information from Redux store from ALL STATE
         const { userLogin: { userInfo } } = getState();
-
         // add token on config, GET request not need Content-type!!!
         const config = {
             headers: {
@@ -113,12 +113,8 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
             }
         }
         
-        // Database PUT QUERY
-        const { data } = await axios.put(
-            `/api/orders/${orderId}/pay`,
-            paymentResult,
-            config 
-        );
+        // Database PUT QUERY for update
+        const { data } = await axios.put(`/api/orders/${orderId}/pay`, paymentResult, config );
 
         dispatch({
             type: ORDER_PAY_SUCCESS,
