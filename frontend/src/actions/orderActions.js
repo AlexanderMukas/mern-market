@@ -54,8 +54,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
 }
 
 // order details
-
-// создание заказа
 export const getOrderDetails = (id) => async (dispatch, getState) => {
     try {
 
@@ -65,7 +63,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
         // this information from Redux store from ALL STATE
         const { userLogin: { userInfo } } = getState();
 
-        // add token on config, GET request not need Content-type!!!
+        // add token on config, GET request not need 'Content-type'!
         const config = {
             headers: {
                 // 'Content-type': 'application/json',
@@ -74,7 +72,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
         }
         
         // Database GET QUERY
-        //pass user in "POST request" in Mongo
+        // pass user in "POST request" in Mongo
         const { data } = await axios.get(
             `/api/orders/${id}`,
             config 
