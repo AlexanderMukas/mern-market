@@ -15,13 +15,11 @@ import {
 // создание заказа
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
-        
         dispatch({ type: ORDER_CREATE_REQUEST })
 
         // this information from Redux store from ALL STATE
-        const { userLogin: { userInfo } } = getState();
-
         // add token on config
+        const { userLogin: { userInfo } } = getState();
         const config = {
             headers: {
                 'Content-type': 'application/json',
@@ -29,8 +27,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
             }
         }
         
-        // Database POST QUERY
-        //pass user in "POST request" in Mongo
+        // Database POST QUERY for create new order
         const { data } = await axios.post(
             `/api/orders`,
             order, 
