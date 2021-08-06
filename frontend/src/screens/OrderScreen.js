@@ -105,9 +105,7 @@ const OrderScreen = ( { match } ) => {
                                                 <Col md={4}>
                                                     {item.qty} x ${item.price} = ${item.qty * item.price}
                                                 </Col>
-
                                             </Row>
-                                            
                                         </ListGroup.Item>
                                     ))
                                     }
@@ -147,7 +145,6 @@ const OrderScreen = ( { match } ) => {
                                     <Col>${order.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            
                         </ListGroup>
                     </Card>
 
@@ -156,4 +153,4 @@ const OrderScreen = ( { match } ) => {
     </>
 }
 
-export default OrderScreen
+export default OrderScreen;
