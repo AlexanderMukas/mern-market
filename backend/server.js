@@ -43,6 +43,12 @@ app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 
+//add get reques for paypal id from 'developer.paypal.com/developer/applications'
+app.get('api/config/paypal', (req, res) => {
+    res.send(process.env.PAYPAL_CLIENT_ID);
+    console.log(process.env.PAYPAL_CLIENT_ID);
+})
+
 // errorMiddleware
 app.use(notFound);
 app.use(errorHandler);
