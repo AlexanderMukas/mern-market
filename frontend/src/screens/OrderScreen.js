@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //for PayPal
 import axios from 'axios';
@@ -17,25 +17,49 @@ import { getOrderDetails } from '../actions/orderActions';
 const OrderScreen = ( { match } ) => {
     const orderId = match.params.id;
 
+    const [ sdkReady, setSdkReady ] = useState(false);
+
     const dispatch = useDispatch();
     
     const orderDetails = useSelector( state => state.orderDetails )
-    const { order, loading, error } = orderDetails; 
+    const { order, loading, error } = orderDetails;
+
+    const orderPay = useSelector( state => state.orderPay )
+    const { loading: loadingPay, success: successPay } = orderPay;
 
     useEffect( () => {
-        // PAYPAL CLIENT ID
+        // Dynamically adding the PAYPAL Script
         // <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
         const addPayPalScript = async () => {
             const { data: clientId } = await axios.get('/api/config/paypal');
-            console.log(clientId);
+            console.log(clientId);     // for TEST
+
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+            script.async = true;
+            script.onload = () => setSdkReady(true);
+            document.body.appendChild(script)
         }
 
-        addPayPalScript()
+        // addPayPalScript()              // for TEST
+
+        if(!order || successPay) {
+            console.log('order=', order);
+            console.log('successPay=', successPay);
+
+            dispatch(getOrderDetails(orderId))
+        } else if(!order.isPaid) {
+            if(!window.paypal) {
+                addPayPalScript();
+            }
+        } else {
+            setSdkReady(true);
+        }
 
 
-
-        dispatch(getOrderDetails(orderId))
-    }, [dispatch, orderId])
+        
+    }, [dispatch, orderId, successPay, order])
 
     //// calculate prices on Order Screen
     // fixed tax 15% for some USA state : 0.15
