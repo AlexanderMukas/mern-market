@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 //for PayPal
 import axios from 'axios';
+import { PayPalButton } from 'react-paypal-button-v2';
 
 import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 
@@ -12,7 +13,8 @@ import Loader from '../components/Message';
 
 import { Link } from 'react-router-dom';
 
-import { getOrderDetails } from '../actions/orderActions';
+import { getOrderDetails, payOrder } from '../actions/orderActions';
+import { ORDER_PAY_RESET } from '../constants/orderConstants';
 
 const OrderScreen = ( { match } ) => {
     const orderId = match.params.id;
@@ -45,9 +47,10 @@ const OrderScreen = ( { match } ) => {
         // addPayPalScript()              // for TEST
 
         if(!order || successPay) {
-            console.log('order=', order);
-            console.log('successPay=', successPay);
-
+            // console.log('order=', order);
+            // console.log('successPay=', successPay);
+            
+            dispatch( { type: ORDER_PAY_RESET}) // Because it has already been paid for.
             dispatch(getOrderDetails(orderId))
         } else if(!order.isPaid) {
             if(!window.paypal) {
@@ -79,6 +82,11 @@ const OrderScreen = ( { match } ) => {
             Number(order.shippingPrice) + 
             Number(order.taxPrice)
         ).toFixed(2);
+    }
+
+    const successPaymentHandler = (paymentResult) => {
+        console.log(paymentResult);
+        dispatch(payOrder(orderId, paymentResult));
     }
     
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <> 
@@ -184,6 +192,18 @@ const OrderScreen = ( { match } ) => {
                                     <Col>${order.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
+                            {/* && - like THEN */}
+                            {!order.isPaid && (
+                                <ListGroup.Item>
+                                    {loadingPay && <Loader />}
+                                    {!sdkReady ? <Loader /> : (
+                                        <PayPalButton 
+                                          amount={order.totalPrice} 
+                                          onSuccess={successPaymentHandler}
+                                        />
+                                    )}
+                                </ListGroup.Item>
+                            )}
                         </ListGroup>
                     </Card>
 
