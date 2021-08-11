@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 
+// Bootstrap
 import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 
+// Redux
 import { useDispatch, useSelector } from 'react-redux';
 
 import Message from '../components/Message';
@@ -13,6 +15,7 @@ import Loader from '../components/Message';
 
 import { Link } from 'react-router-dom';
 
+// Actions
 import { getOrderDetails, payOrder } from '../actions/orderActions';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
 
@@ -30,7 +33,7 @@ const OrderScreen = ( { match } ) => {
     const { loading: loadingPay, success: successPay } = orderPay;
 
     useEffect( () => {
-        // Dynamically adding the PAYPAL Script
+        // Dynamically adding the PAYPAL Script on HTML BODY
         // <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
         const addPayPalScript = async () => {
             const { data: clientId } = await axios.get('/api/config/paypal');
@@ -49,7 +52,7 @@ const OrderScreen = ( { match } ) => {
         if(!order || successPay) {
             // console.log('order=', order);
             // console.log('successPay=', successPay);
-            
+
             dispatch( { type: ORDER_PAY_RESET}) // Because it has already been paid for.
             dispatch(getOrderDetails(orderId))
         } else if(!order.isPaid) {
