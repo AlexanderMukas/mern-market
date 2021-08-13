@@ -66,9 +66,7 @@ const getOrderById = asyncHandler( async (req, res) => {
 const updateOrderToPaid = asyncHandler( async (req, res) => {
     
     //PUT = UPDATE
-
     const order = await Order.findById(req.params.id);
-    
     // console.log(order);
 
     if(order){
@@ -99,8 +97,10 @@ const updateOrderToPaid = asyncHandler( async (req, res) => {
 // @route       GET /api/orders/myorders
 // @access      Private
 const getMyOrders = asyncHandler( async (req, res) => {
+    
     //find from MongoDB
     const orders = await Order.find( { user: req.user._id } );
+
     //send to frontend
     res.json(orders)
 })
