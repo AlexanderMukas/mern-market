@@ -7,6 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
+import { listMyOrders } from '../actions/orderActions';
 
 const ProfileScreen = ( { history } ) => {
     const [name, setName] = useState('');
@@ -30,7 +31,12 @@ const ProfileScreen = ( { history } ) => {
     //get userLogin -> userInfo state
     const userUpdateProfile = useSelector(state => state.userUpdateProfile);
     const { success } = userUpdateProfile;
-    
+
+    // order list of this user
+    const orderListMy = useSelector(state => state.orderListMy);
+    const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+
+
     useEffect( () => {
         if(!userInfo) {
             // если не залогинились -> /login
@@ -38,6 +44,8 @@ const ProfileScreen = ( { history } ) => {
         } else {
             if(!user.name) {
                 dispatch( getUserDetails('profile'))
+                //add order list
+                dispatch( listMyOrders())
             } else {
                 // если залогинились, то данные подтягиваются
                 setName(user.name);
