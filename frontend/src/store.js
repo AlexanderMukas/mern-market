@@ -19,17 +19,17 @@ import { orderCreateReducer,
 } from './reducers/orderReducers';
 
 const reducer = combineReducers({
-    productList: productListReducer,
-    productDetails: productDetailsReducer,
-    cart: cartReducer,
-    userLogin: userLoginReducer,
-    userRegister: userRegisterReducer,
-    userDetails: userDetailsReducer,
-    userUpdateProfile: userUpdateProfileReducer,
-    orderCreate: orderCreateReducer,
-    orderDetails: orderDetailsReducer,
-    orderPay: orderPayReducer,
-    orderListMy: orderListMyReducer,
+    productList:        productListReducer,
+    productDetails:     productDetailsReducer,
+    cart:               cartReducer,
+    userLogin:          userLoginReducer,
+    userRegister:       userRegisterReducer,
+    userDetails:        userDetailsReducer,
+    userUpdateProfile:  userUpdateProfileReducer,
+    orderCreate:        orderCreateReducer,
+    orderDetails:       orderDetailsReducer,
+    orderPay:           orderPayReducer,
+    orderListMy:        orderListMyReducer,
 });
 
 
