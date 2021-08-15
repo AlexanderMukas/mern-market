@@ -10,6 +10,7 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import { Link } from 'react-router-dom';
 
 import { createOrder } from '../actions/orderActions';
+import { removeFromCart } from '../actions/cartActions';
 
 const PlaceOrderScreen = ( { history } ) => {
     
@@ -21,6 +22,12 @@ const PlaceOrderScreen = ( { history } ) => {
 
     const cart = useSelector( state => state.cart);
     
+    const removeFromCartHandler = (id) => {
+
+        console.log(id + ' remove')
+        dispatch( removeFromCart(id) );
+    }
+
     // calculate prices
     cart.itemsPrice = addDecimals(cart.cartItems.reduce( 
         (acc, item) => acc + item.price * item.qty,
@@ -32,11 +39,13 @@ const PlaceOrderScreen = ( { history } ) => {
     //fixed tax 15% for some USA state
     cart.taxPrice = addDecimals( Number( (0.15 * cart.itemsPrice).toFixed(2)) );
 
-    cart.totalPrice = ( 
-        Number(cart.itemsPrice) + 
-        Number(cart.shippingPrice) + 
-        Number(cart.taxPrice)
-    ).toFixed(2);
+    // cart.totalPrice = ( 
+    //     Number(cart.itemsPrice) + 
+    //     Number(cart.shippingPrice) + 
+    //     Number(cart.taxPrice)
+    // ).toFixed(2);
+    let someNum = Number(cart.itemsPrice ) + Number(cart.shippingPrice) + Number(cart.taxPrice); 
+    cart.totalPrice = someNum.toFixed(2);
     
     // get order, success and error var from state
     const orderCreate = useSelector( state => state.orderCreate )
@@ -48,25 +57,6 @@ const PlaceOrderScreen = ( { history } ) => {
         }
         // eslint-disable-next-line
     }, [history, success])
-
-    // button function  !
-    // const placeOrderHandler = () => {
-        
-    //     dispatch( createOrder({
-            // user: ,
-            // orderItems: cart.orderItems,
-            // shippingAddress: cart.shippingAddress,
-            // paymentMethod: cart.paymentMethod,
-            // paymentResult: ,
-            // itemsPrice: cart.itemsPrice,  //not in model
-            // taxPrice: cart.taxPrice,
-            // shippingPrice: cart.shippingPrice,
-            // totalPrice: cart.totalPrice,  //not in model
-            // isPaid: ,
-            // paidAt: ,
-            // isDelivered: ,
-            // deliveredAt: 
-        // }));
 
         // save Order on MongoDB
         const placeOrderHandler = () => {
@@ -132,7 +122,18 @@ const PlaceOrderScreen = ( { history } ) => {
                                                 <Col md={4}>
                                                     {item.qty} x ${item.price} = ${item.qty * item.price}
                                                 </Col>
+                                                
 
+                                                <Col md={2}>
+                                                    <Button 
+                                                        type='button'
+                                                        variant='light'
+                                                        onClick={ () => removeFromCartHandler(item.product)}
+                                                    >
+                                                        <i className='fas fa-trash'></i>
+                                                    </Button>
+                                                </Col>
+                                                
                                             </Row>
                                             
                                         </ListGroup.Item>

@@ -31,8 +31,8 @@ const addOrderItems = asyncHandler( async (req, res) => {
             paymentMethod, 
             itemsPrice,
             taxPrice,
-            shippingPrice,
-            totalPrice
+            totalPrice,
+            shippingPrice
         });
 
         // save to database mongoDB
