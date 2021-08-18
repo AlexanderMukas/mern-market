@@ -55,6 +55,7 @@ const OrderScreen = ( { match } ) => {
 
             dispatch( { type: ORDER_PAY_RESET}) // Because it has already been paid for.
             dispatch(getOrderDetails(orderId))
+            
         } else if(!order.isPaid) {
             if(!window.paypal) {
                 addPayPalScript();
