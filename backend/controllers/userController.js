@@ -118,4 +118,21 @@ const updateUserProfile = asyncHandler( async (req, res) => {
 
 });
 
-export { authUser, registerUser, getUserProfile, updateUserProfile };
+// @desc        Get all users. Admin only
+// @route       GET /api/users
+// @access      Private
+const getUsers = asyncHandler( async (req, res) => {
+
+    // req.user._id -->> from the authMiddleware
+    const users = await User.find({}); 
+
+   res.json(users);
+
+});
+
+export { authUser, 
+    registerUser, 
+    getUserProfile, 
+    updateUserProfile,
+    getUsers
+};
