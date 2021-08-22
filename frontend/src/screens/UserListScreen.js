@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Tab } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -21,9 +21,37 @@ const UserListScreen = () => {
     
     
     return (
-        <div>
-            
-        </div>
+        <>
+          <h1>Users</h1>
+          {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> 
+          : (
+              <Table striped bordered hover responsive className='table-sm'>
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>NAME</th>
+                          <th>EMAIL</th>
+                          <th>ADMIN</th>
+
+                          {/* empty 'th' for delete button */}
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {users.map( user => (
+                        <tr>
+                            <td>{user._id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.isAdmin}</td>
+                            
+                            <td>delete</td>
+                        </tr>
+                    ))}
+                  </tbody>
+              </Table>
+          )} 
+        </>
     )
 }
 
