@@ -14,6 +14,10 @@ const UserListScreen = () => {
 
     const userList = useSelector(state => state.userList);
     const { loading, error, users } = userList;
+
+    useEffect(() => {
+        dispatch(listUsers());
+    }, [dispatch])
     
     
     return (
