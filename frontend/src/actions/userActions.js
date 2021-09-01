@@ -16,7 +16,8 @@ import {
     USER_DETAILS_RESET,
     USER_LIST_REQUEST,
     USER_LIST_SUCCESS,
-    USER_LIST_FAIL
+    USER_LIST_FAIL,
+    USER_LIST_RESET
 } from '../constants/userConstants';
 
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
@@ -67,6 +68,8 @@ export const logout = () => (dispatch) => {
     // for delete session
     dispatch({ type: USER_DETAILS_RESET });
     dispatch({ type: ORDER_LIST_MY_RESET });
+    //reset user list in admin dropdown
+    dispatch({ type: USER_LIST_RESET });
 }
 
 
