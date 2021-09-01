@@ -126,9 +126,25 @@ const getUsers = asyncHandler( async (req, res) => {
     res.json(users);
 });
 
+
+// @desc        Delete user
+// @route       DELETE /api/users/:id
+// @access      Private/Admin
+const deleteUser = asyncHandler( async (req, res) => {
+    const user = await User.findById(req.user._id);  
+    if(user) {
+        await user.remove() // delete from MongoDB
+        res.json({ message: 'User removed' })
+    } else {
+        res.status(404);
+        throw new Error('User not found...')
+    }
+});
+
 export { authUser, 
     registerUser, 
     getUserProfile, 
     updateUserProfile,
-    getUsers
+    getUsers,
+    deleteUser
 };
