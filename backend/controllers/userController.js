@@ -134,7 +134,7 @@ const deleteUser = asyncHandler( async (req, res) => {
     const user = await User.findById(req.params.id);  // not req.user._id - удаление того, кто залогинился
     if(user) {
         await user.remove() // delete from MongoDB
-        res.json({ message: 'User removed' })
+        res.json({ message: `User: '${user.name}' removed!` })
     } else {
         res.status(404);
         throw new Error('User not found...')
