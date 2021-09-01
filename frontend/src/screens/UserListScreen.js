@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Tab } from 'react-bootstrap';
 
@@ -28,7 +28,7 @@ const UserListScreen = ( {history} ) => {
             history.push('/login')
         }
        
-    }, [dispatch, history, successDelete])
+    }, [dispatch, history, successDelete, userInfo ])
     
     const deleteHandler = (id) => {
         // console.log('Delete Handler action!' + id);
@@ -70,7 +70,7 @@ const UserListScreen = ( {history} ) => {
                             
                             {/* delete */}
                             <td>
-                                <LinkContainer to={`/users/${user._id}/edit`}>
+                                <LinkContainer to={`/admin/user/${user._id}/edit`}>
                                     <Button variant='light' className='btn-sm'>
                                         <i className='fas fa-edit'></i>
                                     </Button>
