@@ -155,11 +155,46 @@ const getUserById = asyncHandler( async (req, res) => {
     
 });
 
+// @desc        Update user by ID
+// @route       PUT /api/users/:id
+// @access      Private/Admin
+const updateUser = asyncHandler( async (req, res) => {
+
+    // req.user._id -->> from the authMiddleware
+    const user = await User.findById(req.params.id); 
+    
+    if(user) {
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.isAdmin = req.body.isAdmin || user.isAdmin;
+
+        // if(req.body.password){
+        //     user.password = req.body.password
+        // }
+    
+        const updatedUser = await user.save();
+
+        res.json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin
+            // token: generateToken(updatedUser._id)
+        })
+
+    } else {
+        res.status(404);
+        throw new Error('User not found...')
+    }
+
+});
+
 export { authUser, 
     registerUser, 
     getUserProfile, 
     updateUserProfile,
     getUsers,
     deleteUser,
-    getUserById
+    getUserById,
+    updateUser
 };
