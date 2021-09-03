@@ -1,9 +1,10 @@
 import React from 'react'
 
-const ProductEditScreen = () => {
+const ProductEditScreen = ({match}) => {
+    const productId = match.params.id;
     return (
         <div>
-            ProductEditScreen
+            ProductEditScreen '{productId}'
         </div>
     )
 }
