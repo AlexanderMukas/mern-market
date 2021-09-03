@@ -9,8 +9,13 @@ const getProducts = asyncHandler( async (req, res) => {
 
     // res.status(401)
     // throw new Error('Not Authorized')
-
-    res.json(products)
+    if(products){
+        res.json(products)
+    } else {
+        res.status(404);
+        throw new Error('Products not found!.');
+    }
+    
 });
 
 
