@@ -18,8 +18,9 @@ const ProductListScreen = ( {history} ) => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
-    // const userDelete = useSelector(state => state.userDelete);
-    // const { success: successDelete } = userDelete;
+    // const productDelete = useSelector(state => state.productDelete);
+    // const { success: successDelete } = productDelete;
+
 
     useEffect(() => {
         if(userInfo && userInfo.isAdmin){
@@ -35,7 +36,7 @@ const ProductListScreen = ( {history} ) => {
         console.log('Delete Handler action!' + id);
 
         // if(window.confirm('Are you sure')){
-        //     dispatch( deleteUser(id) );
+        //     dispatch( productUser(id) );
         // }
         
     }
