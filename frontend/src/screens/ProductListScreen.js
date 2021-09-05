@@ -54,7 +54,7 @@ const ProductListScreen = ( {history, match} ) => {
                 </Col>
                 <Col className='text-right'>
                     <Button className='my-3' onClick={createProductHandler}>
-                        Create Product
+                        <i className='fas fa-plus'></i> Create Product
                     </Button>
                 </Col>
             </Row>
@@ -69,7 +69,7 @@ const ProductListScreen = ( {history, match} ) => {
                           <th>BRAND</th>
                           <th>NAME</th>
                           <th>PRICE</th>
-                          <th>COUNT IN STOCK</th>
+                          {/* <th>COUNT IN STOCK</th> */}
 
                           {/* empty 'th' for delete button */}
                           <th></th>
@@ -83,8 +83,8 @@ const ProductListScreen = ( {history, match} ) => {
                             <td>{product.category}</td>
                             <td>{product.brand}</td>
                             <td>{product.name}</td>
-                            <td>{product.price}</td>
-                            <td>{product.countInStock}</td>
+                            <td>${product.price}</td>
+                            {/* <td>{product.countInStock}</td> */}
                             
                             {/* delete */}
                             <td>
