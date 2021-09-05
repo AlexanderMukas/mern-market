@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Table, Button, Tab } from 'react-bootstrap';
+import { Table, Button, Tab, Row, Col } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 
 import { listProducts, deleteProduct } from '../actions/productActions'
 
-const ProductListScreen = ( {history} ) => {
+const ProductListScreen = ( {history, match} ) => {
     
     const dispatch = useDispatch();
 
@@ -18,8 +18,8 @@ const ProductListScreen = ( {history} ) => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
-    // const productDelete = useSelector(state => state.productDelete);
-    // const { success: successDelete } = productDelete;
+    const productDelete = useSelector(state => state.productDelete);
+    const { success: successDelete } = productDelete;
 
 
     useEffect(() => {
@@ -29,21 +29,36 @@ const ProductListScreen = ( {history} ) => {
             history.push('/login')
         }
        
-    }, [dispatch, history, userInfo ])
-    
+    }, [dispatch, history, userInfo, successDelete ])
+
+
     const deleteHandler = (id) => {
 
-        console.log('Delete Handler action!' + id);
+        console.log('Delete Handler action! ' + id);
 
         // if(window.confirm('Are you sure')){
-        //     dispatch( productUser(id) );
+        //     dispatch( deleteProduct(id) );
         // }
         
     }
     
+    const createProductHandler = () => {
+        console.log('Create Handler action!');   
+    }
+    
     return (
         <>
-          <h1>Products</h1>
+            <Row className='align-items-center'>
+                <Col>
+                    <h1>Products</h1>
+                </Col>
+                <Col className='text-right'>
+                    <Button className='my-3' onClick={createProductHandler}>
+                        Create Product
+                    </Button>
+                </Col>
+            </Row>
+          
           {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> 
           : (
               <Table striped bordered hover responsive className='table-sm'>
