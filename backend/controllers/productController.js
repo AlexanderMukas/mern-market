@@ -40,7 +40,7 @@ const updateProduct = asyncHandler( async (req, res) => {
 
     const product = await Product.findById(req.params.id);
     
-    if(user) {
+    if(product) {
         product.name = req.body.name || product.name;
         product.category = req.body.category || product.category;
         product.brand = req.body.brand || product.brand;
