@@ -13,6 +13,7 @@ import { protect, admin } from '../middleware/authMiddleware.js';
 // put middleware on first argument first
 
 // Public routes
+// /api/products/...
 router.route('/').get(getProducts);
 router.route('/:id').get(getProductById);
 
