@@ -33,7 +33,57 @@ const getProductById = asyncHandler( async (req, res) => {
         }
 });
 
+// @desc        Update product by ID
+// @route       PUT /api/products/:id
+// @access      Private/Admin
+const updateProduct = asyncHandler( async (req, res) => {
+
+    const product = await Product.findById(req.params.id);
+    
+    if(user) {
+        product.name = req.body.name || product.name;
+        product.category = req.body.category || product.category;
+        product.brand = req.body.brand || product.brand;
+        product.price = req.body.price || product.price;
+        product.countInStock = req.body.countInStock || product.countInStock;
+        product.description = req.body.description || product.description;
+    
+        const updatedProduct = await product.save();
+
+        res.json({
+            _id: updatedProduct._id,
+            name: updatedProduct.name,
+            category: updatedProduct.category,
+            brand: updatedProduct.brand,
+            price: updatedProduct.price,
+            countInStock: updatedProduct.countInStock,
+            description: updatedProduct.description
+        })
+
+    } else {
+        res.status(404);
+        throw new Error('Product not found...')
+    }
+
+});
+
+// @desc        Delete product
+// @route       DELETE /api/products/:id
+// @access      Private/Admin
+const deleteProduct = asyncHandler( async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if(product) {
+        await product.remove() // delete from MongoDB
+        res.json({ message: `product: '${product.name}' removed!` })
+    } else {
+        res.status(404);
+        throw new Error('Product not found...')
+    }
+});
+
 export {
     getProducts,
-    getProductById
+    getProductById,
+    updateProduct,
+    deleteProduct,
 }
