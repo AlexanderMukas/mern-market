@@ -86,7 +86,7 @@ const ProductListScreen = ( {history, match} ) => {
                             <td>${product.price}</td>
                             {/* <td>{product.countInStock}</td> */}
                             
-                            {/* delete */}
+                            {/* edit and delete btn */}
                             <td>
                                 <LinkContainer to={`/admin/product/${product._id}/edit`}>
                                     <Button variant='light' className='btn-sm'>
