@@ -109,10 +109,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         // only Admin can detele products
         await axios.delete(`/api/products/${id}`, config );
 
-        dispatch({
-            type: PRODUCT_DELETE_SUCCESS
-            // payload: data
-        })
+        dispatch( {type: PRODUCT_DELETE_SUCCESS} );
 
     } catch (error) {
         dispatch({

@@ -111,7 +111,7 @@ const ProductEditScreen = ({match, history}) => {
 
                     {/* ---PRICE--- */}
                     <Form.Group controlId='price'>
-                        <Form.Label>Name</Form.Label>
+                        <Form.Label>Price in $</Form.Label>
                         <Form.Control 
                             type='number' 
                             placeholder='Enter price'
