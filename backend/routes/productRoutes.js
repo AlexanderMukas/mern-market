@@ -1,7 +1,9 @@
 import express from 'express';
 const router = express.Router();
 
-//add controllers
+import { protect, admin } from '../middleware/authMiddleware.js';
+// put middleware on first argument first
+
 import { 
     getProducts, 
     getProductById,
@@ -9,18 +11,17 @@ import {
     deleteProduct
 } from '../controllers/productController.js'
 
-import { protect, admin } from '../middleware/authMiddleware.js';
-// put middleware on first argument first
+
 
 // Public routes
 // /api/products/...
 router.route('/').get(getProducts);
-router.route('/:id').get(getProductById);
+router.route('/:id').get(getProductById).delete(protect, admin, deleteProduct);
 
 // /api/products/...
 router
     .route('/:id')
-    .put(protect, admin, updateProduct)
-    .delete(protect, admin, deleteProduct);
+    .put(protect, admin, updateProduct);
+    
 
 export default router;
