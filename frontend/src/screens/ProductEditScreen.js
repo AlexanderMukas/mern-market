@@ -52,10 +52,7 @@ const ProductEditScreen = ({match, history}) => {
     
         const submitHandler = (e) => {
             e.preventDefault();
-    
-            dispatch( updateProduct({_id: productId, category, brand, name, price }) );
-    
-          
+            dispatch( updateProduct({_id: productId, category, brand, name, price }) );   
         }
 
 
