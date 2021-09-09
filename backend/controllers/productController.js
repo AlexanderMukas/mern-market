@@ -38,15 +38,17 @@ const getProductById = asyncHandler( async (req, res) => {
 // @access      Private/Admin
 const updateProduct = asyncHandler( async (req, res) => {
 
+    const { name, category, brand, price, countInStock, description } = req.body;
+
     const product = await Product.findById(req.params.id);
     
     if(product) {
-        product.name = req.body.name || product.name;
-        product.category = req.body.category || product.category;
-        product.brand = req.body.brand || product.brand;
-        product.price = req.body.price || product.price;
-        product.countInStock = req.body.countInStock || product.countInStock;
-        product.description = req.body.description || product.description;
+        product.name         = name || product.name;
+        product.category     = category || product.category;
+        product.brand        = brand || product.brand;
+        product.price        = price || product.price;
+        product.countInStock = countInStock || product.countInStock;
+        product.description  = description || product.description;
     
         const updatedProduct = await product.save();
 
