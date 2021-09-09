@@ -11,9 +11,6 @@ import {
     deleteProduct
 } from '../controllers/productController.js'
 
-
-
-// Public routes
 // /api/products/...
 router.route('/').get(getProducts);
 
