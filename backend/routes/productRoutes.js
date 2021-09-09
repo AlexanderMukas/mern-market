@@ -16,12 +16,10 @@ import {
 // Public routes
 // /api/products/...
 router.route('/').get(getProducts);
-router.route('/:id').get(getProductById).delete(protect, admin, deleteProduct);
 
-// /api/products/...
-router
-    .route('/:id')
+router.route('/:id')
+    .get(getProductById)
+    .delete(protect, admin, deleteProduct)
     .put(protect, admin, updateProduct);
-    
 
 export default router;
