@@ -38,7 +38,7 @@ const getProductById = asyncHandler( async (req, res) => {
 // @access      Private/Admin
 const updateProduct = asyncHandler( async (req, res) => {
 
-    const { name, category, brand, price, countInStock, description } = req.body;
+    const { name, category, brand, price, countInStock, description, image } = req.body;
 
     const product = await Product.findById(req.params.id);
     
@@ -49,22 +49,26 @@ const updateProduct = asyncHandler( async (req, res) => {
         product.price        = price || product.price;
         product.countInStock = countInStock || product.countInStock;
         product.description  = description || product.description;
+        product.image  = image || product.image;
     
         const updatedProduct = await product.save();
-
-        res.json({
-            _id: updatedProduct._id,
-            name: updatedProduct.name,
-            category: updatedProduct.category,
-            brand: updatedProduct.brand,
-            price: updatedProduct.price,
-            countInStock: updatedProduct.countInStock,
-            description: updatedProduct.description
-        })
+        
+        res.json(updateProduct);
+        
+        // res.json({
+        //     // _id: updatedProduct._id,
+        //     name: updatedProduct.name,
+        //     category: updatedProduct.category,
+        //     brand: updatedProduct.brand,
+        //     price: updatedProduct.price,
+        //     countInStock: updatedProduct.countInStock,
+        //     description: updatedProduct.description,
+        //     image: updatedProduct.image
+        // })
 
     } else {
         res.status(404);
-        throw new Error('Product not found...')
+        throw new Error('Product not found!')
     }
 
 });
