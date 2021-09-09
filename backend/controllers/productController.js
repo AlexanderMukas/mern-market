@@ -53,7 +53,7 @@ const updateProduct = asyncHandler( async (req, res) => {
     
         const updatedProduct = await product.save();
         
-        res.json(updateProduct);
+        res.json(updatedProduct);
         
         // res.json({
         //     // _id: updatedProduct._id,
