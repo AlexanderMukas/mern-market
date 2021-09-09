@@ -81,9 +81,38 @@ const deleteProduct = asyncHandler( async (req, res) => {
     }
 });
 
+// @desc        Create a new product
+// @route       POST /api/products
+// @access      Private/Admin
+const createProduct = asyncHandler( async (req, res) => {
+    const product = new Product({
+        name: 'Sample name',
+        price: 0,
+        user: req.user._id,
+        image: '/images/sample.jpg',
+        brand: 'Sample brand',
+        category: 'Sample category',
+        countInStock: 0,
+        numReviews: 0,
+        description: 'Sample description'
+    })
+
+    const createdProduct = await product.save();
+
+    if(createdProduct) {
+        res.status(201).json(createdProduct)
+
+    } else {
+        res.status(400)
+        throw new Error('Invalid product data')
+    }
+    
+});
+
 export {
     getProducts,
     getProductById,
     updateProduct,
     deleteProduct,
+    createProduct,
 }
