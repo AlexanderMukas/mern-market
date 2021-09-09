@@ -19,7 +19,7 @@ const ProductListScreen = ( {history, match} ) => {
     const { userInfo } = userLogin;
 
     const productDelete = useSelector(state => state.productDelete);
-    const { success: successDelete } = productDelete;
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete;
 
 
     useEffect(() => {
@@ -33,9 +33,7 @@ const ProductListScreen = ( {history, match} ) => {
 
 
     const deleteHandler = (id) => {
-
         // console.log('Delete Handler action! ' + id);
-
         if(window.confirm('Are you sure')){
             dispatch( deleteProduct(id) );
         }
@@ -58,6 +56,8 @@ const ProductListScreen = ( {history, match} ) => {
                     </Button>
                 </Col>
             </Row>
+          {loadingDelete &&  <Loader />}
+          {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
           
           {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> 
           : (
