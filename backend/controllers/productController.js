@@ -37,9 +37,7 @@ const getProductById = asyncHandler( async (req, res) => {
 // @route       PUT /api/products/:id
 // @access      Private/Admin
 const updateProduct = asyncHandler( async (req, res) => {
-
     const { name, category, brand, price, countInStock, description, image } = req.body;
-
     const product = await Product.findById(req.params.id);
     
     if(product) {
@@ -49,22 +47,10 @@ const updateProduct = asyncHandler( async (req, res) => {
         product.price        = price || product.price;
         product.countInStock = countInStock || product.countInStock;
         product.description  = description || product.description;
-        product.image  = image || product.image;
+        product.image        = image || product.image;
     
-        const updatedProduct = await product.save();
-        
+        const updatedProduct = await product.save(); 
         res.json(updatedProduct);
-        
-        // res.json({
-        //     // _id: updatedProduct._id,
-        //     name: updatedProduct.name,
-        //     category: updatedProduct.category,
-        //     brand: updatedProduct.brand,
-        //     price: updatedProduct.price,
-        //     countInStock: updatedProduct.countInStock,
-        //     description: updatedProduct.description,
-        //     image: updatedProduct.image
-        // })
 
     } else {
         res.status(404);
