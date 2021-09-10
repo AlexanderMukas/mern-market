@@ -65,7 +65,10 @@ const ProductListScreen = ( {history, match} ) => {
     }
     
     const createProductHandler = () => {
-        console.log('Create Handler action!');   
+        // console.log('Create Handler action!'); 
+        
+        // add sample product
+        dispatch(createProduct());
     }
     
     return (
