@@ -12,7 +12,11 @@ import {
     PRODUCT_UPDATE_RESET,
     PRODUCT_DELETE_REQUEST,
     PRODUCT_DELETE_SUCCESS,
-    PRODUCT_DELETE_FAIL
+    PRODUCT_DELETE_FAIL,
+    PRODUCT_CREATE_REQUEST,
+    PRODUCT_CREATE_SUCCESS,
+    PRODUCT_CREATE_FAIL,
+    PRODUCT_CREATE_RESET,
 } from '../constants/productConstants.js';
 
 
@@ -79,7 +83,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
         dispatch({ type: PRODUCT_UPDATE_SUCCESS });
 
-        //for updating user
+        //for updating product
         dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
 
     } catch (error) {
@@ -114,6 +118,38 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DELETE_FAIL,
+            payload: 
+                error.response && error.response.data.message 
+                    ? error.response.data.message 
+                    : error.message
+        })
+    }
+}
+
+export const createProduct = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: PRODUCT_CREATE_REQUEST })
+
+        // this information from Redux from ALL STATE
+        const { userLogin: { userInfo } } = getState();
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        // only Admin can
+        const { data } = await axios.post('/api/products', {} , config );
+
+        dispatch({ 
+            type: PRODUCT_CREATE_SUCCESS,
+            payload: data
+        });
+
+    } catch (error) {
+        dispatch({
+            type: PRODUCT_CREATE_FAIL,
             payload: 
                 error.response && error.response.data.message 
                     ? error.response.data.message 
