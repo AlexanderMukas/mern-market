@@ -57,17 +57,14 @@ const ProductListScreen = ( {history, match} ) => {
 
 
     const deleteHandler = (id) => {
-        // console.log('Delete Handler action! ' + id);
         if(window.confirm('Are you sure')){
             dispatch( deleteProduct(id) );
         }
         
     }
     
-    const createProductHandler = () => {
-        // console.log('Create Handler action!'); 
-        
-        // add sample product
+    const createProductHandler = () => {        
+        // add sample product without edit
         dispatch(createProduct());
     }
     
