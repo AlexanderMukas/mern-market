@@ -124,6 +124,42 @@ const ProductEditScreen = ({match, history}) => {
                         </Form.Control>
                     </Form.Group>
 
+                    {/* ---IMAGE--- */}
+                    <Form.Group controlId='image'>
+                        <Form.Label>Image</Form.Label>
+                        <Form.Control 
+                            type='text' 
+                            placeholder='Enter image'
+                            value={image}
+                            onChange={ (e) => setImage(e.target.value) }
+                        >
+                        </Form.Control>
+                    </Form.Group>
+
+                    {/* ---COUNT IN STOCK--- */}
+                    <Form.Group controlId='countinstock'>
+                        <Form.Label>Count in stock</Form.Label>
+                        <Form.Control 
+                            type='number' 
+                            placeholder='Enter count in stock'
+                            value={countInStock}
+                            onChange={ (e) => setCountInStock(e.target.value) }
+                        >
+                        </Form.Control>
+                    </Form.Group>
+
+                    {/* ---DESCRIPTION--- */}
+                    <Form.Group controlId='description'>
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control 
+                            type='text' 
+                            placeholder='Enter description'
+                            value={description}
+                            onChange={ (e) => setDescription(e.target.value) }
+                        >
+                        </Form.Control>
+                    </Form.Group>
+
                     <Button type='submit' variant='primary'>
                         Update
                     </Button>
