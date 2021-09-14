@@ -53,12 +53,18 @@ const ProductEditScreen = ({match, history}) => {
                 }
             }
         
-        }, [dispatch, productId, product, successUpdate, history]);
+        }, [dispatch, history, productId, product, successUpdate]);
     
     
         const submitHandler = (e) => {
             e.preventDefault();
-            dispatch( updateProduct({_id: productId, category, brand, name, price }) );   
+            dispatch( updateProduct(
+                {
+                _id: productId, 
+                category, brand, name, price,
+                image, countInStock, description  
+                }
+            ) );   
         }
 
 
@@ -155,7 +161,7 @@ const ProductEditScreen = ({match, history}) => {
                     <Form.Group controlId='description'>
                         <Form.Label>Description</Form.Label>
                         <Form.Control 
-                            type='text' 
+                            as='textarea' 
                             placeholder='Enter description'
                             value={description}
                             onChange={ (e) => setDescription(e.target.value) }
