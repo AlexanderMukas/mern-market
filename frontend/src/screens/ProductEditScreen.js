@@ -138,7 +138,7 @@ const ProductEditScreen = ({match, history}) => {
                         <Form.Label>Image</Form.Label>
                         <Form.Control 
                             type='text' 
-                            placeholder='Enter image'
+                            placeholder='Enter image url'
                             value={image}
                             onChange={ (e) => setImage(e.target.value) }
                         >
@@ -146,7 +146,7 @@ const ProductEditScreen = ({match, history}) => {
                     </Form.Group>
 
                     {/* ---COUNT IN STOCK--- */}
-                    <Form.Group controlId='countinstock'>
+                    <Form.Group controlId='countInStock'>
                         <Form.Label>Count in stock</Form.Label>
                         <Form.Control 
                             type='number' 
