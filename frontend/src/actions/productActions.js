@@ -83,8 +83,8 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
         dispatch({ type: PRODUCT_UPDATE_SUCCESS });
 
-        //for updating product
-        // dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
+        // for updating product
+        dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
 
     } catch (error) {
         dispatch({
@@ -134,7 +134,7 @@ export const createProduct = () => async (dispatch, getState) => {
         const { userLogin: { userInfo } } = getState();
         const config = {
             headers: {
-                'Content-type': 'application/json',
+                // 'Content-type': 'application/json',
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
