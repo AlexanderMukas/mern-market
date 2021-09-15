@@ -41,7 +41,7 @@ const ProductEditScreen = ({match, history}) => {
             } else {
     
                 if(!product.name || product._id !== productId){
-                    dispatch(listProductDetails(productId))
+                    dispatch( listProductDetails(productId) )
                 } else {
                     setCategory(product.category)
                     setBrand(product.brand)
@@ -58,13 +58,17 @@ const ProductEditScreen = ({match, history}) => {
     
         const submitHandler = (e) => {
             e.preventDefault();
-            dispatch( updateProduct(
-                {
+
+            dispatch( updateProduct({
                 _id: productId, 
-                category, brand, name, price,
-                image, countInStock, description  
-                }
-            ) );   
+                category,
+                brand,
+                name,
+                price,
+                image,
+                countInStock,
+                description}) 
+            );   
         }
 
 
