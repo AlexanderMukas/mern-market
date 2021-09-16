@@ -10,8 +10,13 @@ axios
 Back End :
 
 Node.js
-Express.js
-bcryptjs for passwords
+nodemon (autorefresh run - dev)
+concurrently (dev)
+express
+express-async-handler
+bcryptjs (passwords) 
+colors
+dotenv
 jsonwebtoken
 mongoose
 multer (download files on server)
