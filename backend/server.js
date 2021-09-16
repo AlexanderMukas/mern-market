@@ -2,6 +2,8 @@ import express from 'express';
 // add colors.js
 import colors from 'colors';
 
+import path from 'path';
+
 // this MongoDB connection
 import dotenv from 'dotenv';
 import connectDB from './config/db.js';
@@ -48,6 +50,10 @@ app.use('api/upload', uploadRoutes);
 
 //add get reques for paypal id from 'developer.paypal.com/developer/applications'
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+
+// for upload folder
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // errorMiddleware
 app.use(notFound);
