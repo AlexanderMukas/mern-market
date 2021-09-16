@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import path from path;
+import path from 'path';
 import multer from 'multer';
 
 // null - for the ERROR in cb

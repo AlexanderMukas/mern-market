@@ -12,7 +12,8 @@ import connectDB from './config/db.js';
 //this with MongoDB
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-import orderRoutes from './routes/orderRoutes.js'
+import orderRoutes from './routes/orderRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 // add error middleWare
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
@@ -38,10 +39,12 @@ app.get('/', (req, res) => {
     res.send('API in backend (EXPRESS.JS) is running...')
 });
 
-// ------------------+products with routes+ 
+
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
+
+app.use('api/upload', uploadRoutes);
 
 //add get reques for paypal id from 'developer.paypal.com/developer/applications'
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
@@ -50,7 +53,6 @@ app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_I
 app.use(notFound);
 app.use(errorHandler);
 
-// ------------------products with routes
 
 const PORT = process.env.PORT || 5000 ;
 app.listen( PORT, console.log(`Server running in <<${process.env.NODE_ENV} mode>> on PORT: ${PORT}`.yellow.bold) );
