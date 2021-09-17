@@ -78,6 +78,7 @@ const ProductEditScreen = ({match, history}) => {
 
         const uploadFileHandler = async (e) => {
             const file = e.target.files[0] // single file, first item in array
+            // console.log(file, ' <---- file')
             const formData = new FormData()
             formData.append('image', file);
             setUploading(true)
@@ -167,6 +168,7 @@ const ProductEditScreen = ({match, history}) => {
                     {/* ---IMAGE--- */}
                     <Form.Group controlId='image'>
                         <Form.Label>Image</Form.Label>
+
                         <Form.Control 
                             type='text' 
                             placeholder='Enter image url'
