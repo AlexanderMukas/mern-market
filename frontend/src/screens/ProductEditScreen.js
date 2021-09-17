@@ -11,6 +11,9 @@ import { listProductDetails, updateProduct } from '../actions/productActions';
 
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
+// for uploading photo of product
+import axios from 'axios';
+
 const ProductEditScreen = ({match, history}) => {
     const productId = match.params.id;
 
