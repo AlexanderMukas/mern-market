@@ -76,7 +76,9 @@ const ProductEditScreen = ({match, history}) => {
             );   
         }
 
+        // function of download photo and set path in image field
         const uploadFileHandler = async (e) => {
+            
             const file = e.target.files[0] // single file, first item in array
             console.log('file: ', file)
             const formData = new FormData()
@@ -89,9 +91,9 @@ const ProductEditScreen = ({match, history}) => {
                         'Content-Type': 'multipart/form-data'
                     }
                 }
-
+                // data : '/uploads/image-1631915970069.png'
                 const { data } = await axios.post('/api/upload', formData, config);
-                setImage(data) // path
+                setImage(data)
                 setUploading(false)
 
             } catch (error) {
