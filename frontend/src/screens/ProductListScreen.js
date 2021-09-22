@@ -82,7 +82,7 @@ const ProductListScreen = ( {history, match} ) => {
           {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> 
           : (
               <Table striped bordered hover responsive className='table-sm'>
-                  <thead>
+                  <thead className='text-center'>
                       <tr>
                           <th>ID</th>
                           <th>CATEGORY</th>
