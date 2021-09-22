@@ -89,7 +89,7 @@ const ProductListScreen = ( {history, match} ) => {
                           <th>BRAND</th>
                           <th>NAME</th>
                           <th>PRICE</th>
-                          {/* <th>COUNT IN STOCK</th> */}
+                          <th>COUNT IN STOCK</th>
 
                           {/* empty 'th' for delete button */}
                           <th></th>
@@ -104,15 +104,18 @@ const ProductListScreen = ( {history, match} ) => {
                             <td>{product.brand}</td>
                             <td>{product.name}</td>
                             <td>${product.price}</td>
-                            {/* <td>{product.countInStock}</td> */}
+                            <td>{product.countInStock}</td>
                             
-                            {/* edit and delete btn */}
+                            
                             <td>
+                                {/* edit button */}
                                 <LinkContainer to={`/admin/product/${product._id}/edit`}>
                                     <Button variant='light' className='btn-sm'>
                                         <i className='fas fa-edit'></i>
                                     </Button>
                                 </LinkContainer>
+
+                                {/* delete button */}
                                 <Button 
                                     variant='danger'
                                     className='btn-sm'
