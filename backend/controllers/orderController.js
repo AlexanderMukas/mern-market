@@ -105,15 +105,12 @@ const getMyOrders = asyncHandler( async (req, res) => {
     res.json(orders)
 })
 
-// @desc        Get logged in user orders
+// @desc        Get all orders
 // @route       GET /api/orders
 // @access      Private/Admin
 const getOrders = asyncHandler( async (req, res) => {
 
-    //find from MongoDB
     const orders = await Order.find( {} );
-
-    //send to frontend
     res.json(orders)
 })
 
@@ -121,5 +118,6 @@ export {
     addOrderItems,
     getOrderById,
     updateOrderToPaid,
-    getMyOrders
+    getMyOrders,
+    getOrders
 }
