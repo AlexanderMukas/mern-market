@@ -12,10 +12,14 @@ import {
     ORDER_PAY_RESET,
     ORDER_LIST_MY_REQUEST,
     ORDER_LIST_MY_SUCCESS,
-    ORDER_LIST_MY_FAIL
+    ORDER_LIST_MY_FAIL,
+    ORDER_LIST_REQUEST,
+    ORDER_LIST_SUCCESS,
+    ORDER_LIST_FAIL,
+
 } from '../constants/orderConstants';
 
-// создание заказа
+
 export const createOrder = (order) => async (dispatch, getState) => {
     try {
         dispatch({ type: ORDER_CREATE_REQUEST })
@@ -53,7 +57,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     }
 }
 
-// order details
+
 export const getOrderDetails = (id) => async (dispatch, getState) => {
     try {
 
@@ -94,7 +98,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     }
 }
 
-// оплата заказа
+
 export const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
     try {
 
@@ -130,7 +134,7 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
     }
 }
 
-// оплата заказа
+// all orders logged user
 export const listMyOrders = () => async (dispatch, getState) => {
     try {
 
@@ -156,6 +160,39 @@ export const listMyOrders = () => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: ORDER_LIST_MY_FAIL,
+            payload: 
+                error.response && error.response.data.message 
+                    ? error.response.data.message 
+                    : error.message
+        })
+    }
+}
+
+// all created orders
+export const listAllOrders = () => async (dispatch, getState) => {
+    try {
+        //for spinner "LOADING..."
+        dispatch({ type: ORDER_LIST_REQUEST })
+
+        // this information from Redux store from ALL STATE
+        const { userLogin: { userInfo } } = getState();
+        // add token on config, GET request not need Content-type!!!
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+        const { data } = await axios.get('/api/orders', config);
+
+        dispatch({
+            type: ORDER_LIST_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: ORDER_LIST_FAIL,
             payload: 
                 error.response && error.response.data.message 
                     ? error.response.data.message 
