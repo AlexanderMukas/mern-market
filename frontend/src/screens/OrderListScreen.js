@@ -58,6 +58,7 @@ const OrderListScreen = ( {history, match} ) => {
               <Table striped bordered hover responsive className='table-sm'>
                   <thead>
                       <tr>
+                          <th>№</th>
                           <th>ID</th>
                           <th>USER ID</th>
                           <th>TOTAL PRICE</th>
@@ -71,9 +72,10 @@ const OrderListScreen = ( {history, match} ) => {
                       </tr>
                   </thead>
                   <tbody>
-                    {orders.map( order => (
+                    {orders.map( (order, iter) => (
+                        
                         <tr key={order._id}>
-
+                            <td>{iter+1}</td>
                             <td>{order._id}</td>
                             <td>{order.user}</td>
                             <td>{order.totalPrice}</td>
