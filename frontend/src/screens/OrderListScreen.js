@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 
 import { listAllOrders } from '../actions/orderActions'
-import { ORDER_LIST_RESET } from '../constants/orderConstants';
+// import { ORDER_LIST_RESET } from '../constants/orderConstants';
 
 const OrderListScreen = () => {
 
@@ -33,7 +33,7 @@ const OrderListScreen = () => {
         if(!userInfo.isAdmin){
             history.push('/login')
         } else {
-            dispatch(listProducts());
+            dispatch( listAllOrders() );
         }
         
        
@@ -51,9 +51,69 @@ const OrderListScreen = () => {
 
 
     return (
-        <div>
-            Order List !!!
-        </div>
+        <>
+          <h1>Orders</h1>
+          {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> 
+          : (
+              <Table striped bordered hover responsive className='table-sm'>
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>USER ID</th>
+                          <th>TOTAL PRICE</th>
+                          <th>IS PAID</th>
+                          <th>IS DELIVERED</th>
+                          <th>CREATED AT</th>
+                          <th>UPDATED AT</th>
+
+                          {/* empty 'th' for delete button */}
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {orders.map( order => (
+                        <tr key={order._id}>
+
+                            <td>{order._id}</td>
+                            <td>{order.user}</td>
+                            <td>{order.totalPrice}</td>
+                            
+                            <td>
+                                {order.isPaid ? (<i className='fas fa-check' style={{color: 'green'}}></i>) 
+                                    : (<i className='fas fa-times' style={{ color: 'red'}}></i>)
+                                }
+                            </td>
+
+                            <td>
+                                {order.isDelivered ? (<i className='fas fa-check' style={{color: 'green'}}></i>) 
+                                    : (<i className='fas fa-times' style={{ color: 'red'}}></i>)
+                                }
+                            </td>
+                            
+                            <td>{order.createdAt}</td>
+                            <td>{order.updatedAt}</td>
+
+                            {/* delete */}
+                            <td>
+                                <LinkContainer to={`/admin/order/${order._id}/edit`}>
+                                    <Button variant='light' className='btn-sm'>
+                                        <i className='fas fa-edit'></i>
+                                    </Button>
+                                </LinkContainer>
+                                <Button 
+                                    variant='danger'
+                                    className='btn-sm'
+                                    onClick={() => deleteHandler(order._id)}
+                                >
+                                    <i className='fas fa-trash'></i>
+                                </Button>
+                            </td>
+                        </tr>
+                    ))}
+                  </tbody>
+              </Table>
+          )} 
+        </>
     )
 }
 
