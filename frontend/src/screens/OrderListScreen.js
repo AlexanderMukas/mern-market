@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import { listAllOrders } from '../actions/orderActions'
 // import { ORDER_LIST_RESET } from '../constants/orderConstants';
 
-const OrderListScreen = () => {
+const OrderListScreen = ( {history, match} ) => {
 
     const dispatch = useDispatch();
 
@@ -37,7 +37,7 @@ const OrderListScreen = () => {
         }
         
        
-    }, [dispatch, history, userInfo, successDelete])
+    }, [dispatch, history, userInfo]) // add successDelete
 
 
     const deleteHandler = (id) => {
