@@ -16,6 +16,9 @@ import {
     ORDER_LIST_REQUEST,
     ORDER_LIST_SUCCESS,
     ORDER_LIST_FAIL,
+    ORDER_UPDATE_REQUEST,
+    ORDER_UPDATE_SUCCESS,
+    ORDER_UPDATE_FAIL,
 
 } from '../constants/orderConstants';
 
@@ -193,6 +196,38 @@ export const listAllOrders = () => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: ORDER_LIST_FAIL,
+            payload: 
+                error.response && error.response.data.message 
+                    ? error.response.data.message 
+                    : error.message
+        })
+    }
+}
+
+export const updateOrder = (order) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: ORDER_UPDATE_REQUEST })
+
+        // this information from Redux from ALL STATE
+        const { userLogin: { userInfo } } = getState();
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        // only Admin can update users
+        const { data } = await axios.put(`/api/orders/${order._id}`, order, config );
+
+        dispatch({ type: ORDER_UPDATE_SUCCESS });
+
+        // for updating order (test this!!!)
+        dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
+
+    } catch (error) {
+        dispatch({
+            type: ORDER_UPDATE_FAIL,
             payload: 
                 error.response && error.response.data.message 
                     ? error.response.data.message 
