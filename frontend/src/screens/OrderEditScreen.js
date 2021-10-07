@@ -45,7 +45,7 @@ const OrderEditScreen = ( {match, history} ) => {
                 }
             }
         
-        }, [dispatch, history, orderId, order ]); // successUpdate
+        }, [dispatch, history, orderId, order, successUpdate ]);
     
     
         const submitHandler = (e) => {
