@@ -24,6 +24,10 @@ const OrderEditScreen = ( {match, history} ) => {
     const orderDetails = useSelector(state => state.orderDetails);
     const { loading, error, order } = orderDetails;
 
+    // console.log(`loading: ${loading}`);
+    // console.log(`error: ${error}`);
+    // console.log(`order: ${order}`);
+
     const orderUpdate = useSelector(state => state.orderUpdate);
     const { 
         loading: loadingUpdate, 
