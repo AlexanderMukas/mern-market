@@ -7,21 +7,61 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 
-import { listProductDetails, updateProduct } from '../actions/productActions';
+import { getOrderDetails, updateOrder } from '../actions/orderActions';
 
-import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
+import { ORDER_UPDATE_RESET } from '../constants/orderConstants';
 
 
-const OrderEditScreen = () => {
+const OrderEditScreen = ( {match, history} ) => {
+    const orderId = match.params.id;
+
+    const [isPaid, setIsPaid] = useState(false);
+   
+    const [isDelivered, setIsDelivered] = useState(false);
+
+    const dispatch = useDispatch();
+    
+    const orderDetails = useSelector(state => state.orderDetails);
+    const { loading, error, order } = orderDetails;
+
+    const orderUpdate = useSelector(state => state.orderUpdate);
+    const { 
+        loading: loadingUpdate, 
+        error: errorUpdate, 
+        success: successUpdate } = orderUpdate;
+
+    
+        useEffect( () => {
+            if(successUpdate){
+                dispatch({ type: ORDER_UPDATE_RESET});
+                history.push('/admin/orderlist')
+            } else {
+    
+                if(order._id !== orderId){
+                    dispatch( getOrderDetails(orderId) )
+                } else {
+                    setIsPaid(order.isPaid)
+                    setIsDelivered(order.isDelivered)
+                }
+            }
+        
+        }, [dispatch, history, orderId, order ]); // successUpdate
+    
+    
+        const submitHandler = (e) => {
+            e.preventDefault();
+
+            dispatch( updateOrder({_id: orderId, isPaid, isDelivered}) );   
+        }
 
     return (
         <>
-            <Link to='/admin/productlist' className='btn btn-light my-3'>
+            <Link to='/admin/orderlist' className='btn btn-light my-3'>
                 Go Back
             </Link>
 
             <FormContainer>
-                <h1>Edit Product</h1>
+                <h1>Edit Order</h1>
                 { loadingUpdate && <Loader /> }
                 { errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
             
@@ -29,99 +69,30 @@ const OrderEditScreen = () => {
                 
                 <Form onSubmit={submitHandler}>
                     
-                    {/* ---CATEGORY--- */}
-                    <Form.Group controlId='category'>
-                        <Form.Label>Category</Form.Label>
-                        <Form.Control 
-                            type='text' 
-                            placeholder='Enter category'
-                            value={category}
-                            onChange={ (e) => setCategory(e.target.value) }
-                        >
-                        </Form.Control>
+                    {/* ---IS PAID--- */}
+                    <Form.Group controlId='ispaid'>
+                        
+                        <Form.Check
+                            type='checkbox' 
+                            label='Is Paid'
+                            checked={isPaid}
+                            onChange={ (e) => setIsPaid(e.target.checked)}
+                        > 
+                        </Form.Check>
                     </Form.Group>
 
-                    {/* ---BRAND--- */}
-                    <Form.Group controlId='brand'>
-                        <Form.Label>Brand</Form.Label>
-                        <Form.Control 
-                            type='text' 
-                            placeholder='Enter brand'
-                            value={brand}
-                            onChange={ (e) => setBrand(e.target.value) }
-                        >
-                        </Form.Control>
+                    {/* ---IS DELIVERED--- */}
+                    <Form.Group controlId='isdelivered'>
+                        
+                        <Form.Check
+                            type='checkbox' 
+                            label='Is Delivered'
+                            checked={isDelivered}
+                            onChange={ (e) => setIsDelivered(e.target.checked)}
+                        > 
+                        </Form.Check>
                     </Form.Group>
 
-
-                    {/* ---NAME--- */}
-                    <Form.Group controlId='name'>
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control 
-                            type='text' 
-                            placeholder='Enter name'
-                            value={name}
-                            onChange={ (e) => setName(e.target.value) }
-                        >
-                        </Form.Control>
-                    </Form.Group>
-
-                    {/* ---PRICE--- */}
-                    <Form.Group controlId='price'>
-                        <Form.Label>Price in $</Form.Label>
-                        <Form.Control 
-                            type='number' 
-                            placeholder='Enter price'
-                            value={price}
-                            onChange={ (e) => setPrice(e.target.value) }
-                        >
-                        </Form.Control>
-                    </Form.Group>
-
-                    {/* ---IMAGE--- */}
-                    <Form.Group controlId='image'>
-                        <Form.Label>Image</Form.Label>
-
-                        <Form.Control 
-                            type='text' 
-                            placeholder='Enter image url'
-                            value={image}
-                            onChange={ (e) => setImage(e.target.value) }
-                        >
-                        </Form.Control>
-
-                        <Form.File 
-                            id='image-file'
-                            label='Choose File'
-                            custom
-                            onChange={uploadFileHandler}
-                        ></Form.File>
-                        {uploading && <Loader />}
-                    </Form.Group>
-
-                    {/* ---COUNT IN STOCK--- */}
-                    <Form.Group controlId='countInStock'>
-                        <Form.Label>Count in stock</Form.Label>
-                        <Form.Control 
-                            type='number' 
-                            placeholder='Enter count in stock'
-                            value={countInStock}
-                            onChange={ (e) => setCountInStock(e.target.value) }
-                        >
-                        </Form.Control>
-                    </Form.Group>
-
-                    {/* ---DESCRIPTION--- */}
-                    <Form.Group controlId='description'>
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control 
-                            as='textarea' 
-                            placeholder='Enter description'
-                            value={description}
-                            onChange={ (e) => setDescription(e.target.value) }
-                        >
-                        </Form.Control>
-                    </Form.Group>
 
                     <Button type='submit' variant='primary'>
                         Update
