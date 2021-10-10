@@ -59,7 +59,7 @@ const OrderListScreen = ( {history, match} ) => {
                   <thead>
                       <tr>
                           <th>№</th>
-                          <th>ID</th>
+                          <th>ORDER ID</th>
                           <th>USERNAME</th>
                           <th>TOTAL PRICE</th>
                           <th>IS PAID</th>
