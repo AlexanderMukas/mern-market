@@ -60,7 +60,7 @@ const OrderListScreen = ( {history, match} ) => {
                       <tr>
                           <th>№</th>
                           <th>ID</th>
-                          <th>USER ID</th>
+                          <th>USERNAME</th>
                           <th>TOTAL PRICE</th>
                           <th>IS PAID</th>
                           <th>IS DELIVERED</th>
@@ -73,11 +73,11 @@ const OrderListScreen = ( {history, match} ) => {
                   </thead>
                   <tbody>
                     {orders.map( (order, iter) => (
-                        
+
                         <tr key={order._id}>
                             <td>{iter+1}</td>
                             <td>{order._id}</td>
-                            <td>{order.user}</td>
+                            <td>{order.user.name}</td>
                             <td>{order.totalPrice}</td>
                             
                             <td>
