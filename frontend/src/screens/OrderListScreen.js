@@ -18,14 +18,6 @@ const OrderListScreen = ( {history} ) => {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
 
-    // const orderDelete = useSelector(state => state.orderDelete);
-    // const { 
-    //     loading: loadingDelete, 
-    //     error: errorDelete, 
-    //     success: successDelete 
-    // } = orderDelete;
-
-
     useEffect(() => {
         if(!userInfo.isAdmin){
             history.push('/login')
@@ -34,18 +26,7 @@ const OrderListScreen = ( {history} ) => {
         }
         
        
-    }, [dispatch, history, userInfo]) // add successDelete
-
-
-    const deleteHandler = (id) => {
-        console.log(`delete order ${id}`);
-
-        // if(window.confirm('Are you sure?')){
-        //     dispatch( deleteOrder(id) );
-        // }
-        
-    }
-
+    }, [dispatch, history, userInfo]) 
 
     return (
         <>
@@ -64,8 +45,6 @@ const OrderListScreen = ( {history} ) => {
                           <th>CREATED AT</th>
                           <th>UPDATED AT</th>
 
-                          {/* empty 'th' for delete button */}
-                          <th></th>
                       </tr>
                   </thead>
                   <tbody>
@@ -92,21 +71,7 @@ const OrderListScreen = ( {history} ) => {
                             <td>{order.createdAt}</td>
                             <td>{order.updatedAt}</td>
 
-                            {/* delete */}
-                            <td>
-                                <LinkContainer to={`/admin/order/${order._id}/edit`}>
-                                    <Button variant='light' className='btn-sm'>
-                                        <i className='fas fa-edit'></i>
-                                    </Button>
-                                </LinkContainer>
-                                <Button 
-                                    variant='danger'
-                                    className='btn-sm'
-                                    onClick={() => deleteHandler(order._id)}
-                                >
-                                    <i className='fas fa-trash'></i>
-                                </Button>
-                            </td>
+                            
                         </tr>
                     ))}
                   </tbody>
