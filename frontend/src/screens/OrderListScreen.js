@@ -38,13 +38,11 @@ const OrderListScreen = ( {history} ) => {
                       <tr>
                           <th>№</th>
                           <th>ORDER ID</th>
-                          <th>USERNAME</th>
+                          <th>USER</th>
+                          <th>DATE</th>
                           <th>TOTAL PRICE</th>
-                          <th>IS PAID</th>
-                          <th>IS DELIVERED</th>
-                          <th>CREATED AT</th>
-                          <th>UPDATED AT</th>
-
+                          <th>PAID</th>
+                          <th>DELIVERED</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -53,8 +51,9 @@ const OrderListScreen = ( {history} ) => {
                         <tr key={order._id}>
                             <td>{iter+1}</td>
                             <td>{order._id}</td>
-                            <td>{order.user.name}</td>
-                            <td>{order.totalPrice}</td>
+                            <td>{order.user && order.user.name}</td>
+                            <td>{order.createdAt.substring(0,10)}</td>
+                            <td>$ {order.totalPrice}</td>
                             
                             <td>
                                 {order.isPaid ? (<i className='fas fa-check' style={{color: 'green'}}></i>) 
@@ -68,8 +67,8 @@ const OrderListScreen = ( {history} ) => {
                                 }
                             </td>
                             
-                            <td>{order.createdAt}</td>
-                            <td>{order.updatedAt}</td>
+                            
+
 
                             
                         </tr>
