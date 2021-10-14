@@ -6,7 +6,7 @@ import { addOrderItems,
          updateOrderToPaid,
          getMyOrders,
          getOrders,
-         updateOrder,
+        //  updateOrder,
          updateOrderToDelivered
 } from '../controllers/orderController.js';
 
