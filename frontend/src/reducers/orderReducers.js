@@ -16,6 +16,10 @@ import {
     ORDER_LIST_REQUEST,
     ORDER_LIST_SUCCESS,
     ORDER_LIST_FAIL,
+    ORDER_DELIVER_REQUEST,
+    ORDER_DELIVER_SUCCESS,
+    ORDER_DELIVER_FAIL,
+    ORDER_DELIVER_RESET,
     // ORDER_LIST_RESET,
     // ORDER_UPDATE_REQUEST,
     // ORDER_UPDATE_SUCCESS,
@@ -96,6 +100,33 @@ export const orderPayReducer = (state = {}, action) => {
             }
 
         case ORDER_PAY_RESET:
+            return {}
+        
+        default:
+            return state;
+    }
+}
+
+export const orderDeliverReducer = (state = {}, action) => {
+    switch(action.type) {
+        case ORDER_DELIVER_REQUEST:
+            return { 
+                loading: true 
+            }
+
+        case ORDER_DELIVER_SUCCESS:
+            return { 
+                loading: false,
+                succes: true     
+            }
+
+        case ORDER_DELIVER_FAIL:
+            return { 
+                loading: false,
+                error: action.payload
+            }
+
+        case ORDER_DELIVER_RESET:
             return {}
         
         default:
