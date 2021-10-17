@@ -16,8 +16,8 @@ import Loader from '../components/Message';
 import { Link } from 'react-router-dom';
 
 // Actions
-import { getOrderDetails, payOrder } from '../actions/orderActions';
-import { ORDER_PAY_RESET } from '../constants/orderConstants';
+import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions';
+import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants';
 
 const OrderScreen = ( { match } ) => {
     const orderId = match.params.id;
@@ -31,6 +31,9 @@ const OrderScreen = ( { match } ) => {
 
     const orderPay = useSelector( state => state.orderPay )
     const { loading: loadingPay, success: successPay } = orderPay;
+
+    const orderDeliver = useSelector( state => state.orderDeliver )
+    const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
 
     useEffect( () => {
         // Dynamically adding the PAYPAL Script on HTML BODY
