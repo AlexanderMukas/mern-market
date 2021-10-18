@@ -39,6 +39,10 @@ const OrderScreen = ( { history, match } ) => {
     const { userInfo } = userLogin;
 
     useEffect( () => {
+        if(!userInfo){
+            history.push('/login');
+        }
+
         // Dynamically adding the PAYPAL Script on HTML BODY
         // <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
         const addPayPalScript = async () => {
@@ -220,7 +224,7 @@ const OrderScreen = ( { history, match } ) => {
                                     )}
                                 </ListGroup.Item>
                             )}
-                            {userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                            {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                                 <ListGroup.Item>
                                     <Button 
                                         type='button' 
