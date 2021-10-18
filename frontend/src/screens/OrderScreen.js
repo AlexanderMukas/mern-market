@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions';
 import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants';
 
-const OrderScreen = ( { match } ) => {
+const OrderScreen = ( { history, match } ) => {
     const orderId = match.params.id;
 
     const [ sdkReady, setSdkReady ] = useState(false);
