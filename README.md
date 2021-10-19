@@ -20,3 +20,4 @@ dotenv
 jsonwebtoken
 mongoose
 multer (download files on server)
+morgan - http request logger middleware

@@ -1,6 +1,7 @@
 import express from 'express';
 // add colors.js
 import colors from 'colors';
+import morgan from 'morgan';
 
 import path from 'path';
 
@@ -24,6 +25,11 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// add morgan HTTP req logger only for DEV mode
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
 
 // body like json
 app.use(express.json())
