@@ -58,11 +58,9 @@ const ProductScreen = ( {history, match} ) => {
             <Link className='btn btn-light my-3' to='/' >
                 Go Back
             </Link>
-            {loading ? 
-                    <Loader /> 
-                : error ? 
-                    <Message variant='danger'>{error}</Message>
-                        : 
+            {loading ? ( <Loader /> ) : error ? (<Message variant='danger'>{error}</Message>)
+                        : (
+                  <>
                     <Row>
 
                         <Col md={6}>
@@ -159,6 +157,14 @@ const ProductScreen = ( {history, match} ) => {
                             </Card>
                         </Col>
                     </Row>
+                    <Row>
+                        <Col md={6}>
+                            <h2>Reviews</h2>
+                            
+                        </Col>
+                    </Row>
+                  </>
+                )
             }
         </>
     )
