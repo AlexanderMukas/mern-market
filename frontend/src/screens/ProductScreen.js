@@ -7,17 +7,39 @@ import Rating from '../components/Rating';
 // import products from '../products';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { listProductDetails } from '../actions/productActions';
+
+import { 
+    listProductDetails, 
+    createProductReview,
+} from '../actions/productActions';
+import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants';
 
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
 const ProductScreen = ( {history, match} ) => {
     const [qty, setQty] = useState(1);
+
+    //for comments
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState('');
+
     
     // const [product, setProduct] = useState([]);
     const dispatch = useDispatch();
-    
+
+    const productDetails = useSelector( state => state.productDetails);
+    const { loading, error, product } = productDetails;
+
+    const productReviewCreate = useSelector( state => state.productReviewCreate);
+    const { 
+        // loading: loadingProductReview, 
+        error: errorProductReview, 
+        success: successProductReview,
+    } = productReviewCreate;
+
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
     useEffect( async () => {
         dispatch(listProductDetails(match.params.id))
@@ -29,8 +51,7 @@ const ProductScreen = ( {history, match} ) => {
 
     }
 
-    const productDetails = useSelector( state => state.productDetails);
-    const { loading, error, product } = productDetails;
+    
     
     return (
         <>
