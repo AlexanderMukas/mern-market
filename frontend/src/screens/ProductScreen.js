@@ -175,9 +175,16 @@ const ProductScreen = ( {history, match} ) => {
                                 <ListGroup.Item>
                                     <h2>Write a Customer Review</h2>
                                     {userInfo ? (
-                                        <h2></h2>
-                                    ): <Message var='warning'>
-                                        Please <Link to='/login'>sign in</Link>to write a review
+                                        <Form onSubmit={submitHandler}>
+                                            <Form.Group controlId='rating'>
+                                                <Form.Label>Rating</Form.Label>
+
+                                            </Form.Group>
+                                        </Form>
+                                    )
+                                    : <Message var='warning'>
+                                        Please <Link to='/login'>sign in</Link> to write a review
+                                        {' '}
                                     </Message>}
 
                                 </ListGroup.Item>
