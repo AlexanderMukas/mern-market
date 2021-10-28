@@ -12,16 +12,20 @@ import Loader from '../components/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions'
 
+const HomeScreen = ( {match} ) => {
 
+    // CHEACK THE KEYWORD
+    // from url, like "http://localhost:3000/search/Sony"
+    // keyword = "Sony"
+    const keyword = match.params.keyword; 
 
-const HomeScreen = () => {
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
     const { loading, error, products } = productList;
 
     useEffect( async () => {
 
-        dispatch( listProducts() );
+        dispatch( listProducts(keyword) );
 
     }, [dispatch]);
 

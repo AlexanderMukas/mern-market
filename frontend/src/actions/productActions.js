@@ -25,12 +25,16 @@ import {
 
 
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = (keyword = '') => async (dispatch) => {
     try {
         //for spinner "LOADING..."
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get('/api/products');
+        // without keyword:
+        // const { data } = await axios.get('/api/products');
+
+        // with keyword
+        const { data } = await axios.get(`/api/products?keyword=${keyword}`);
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
