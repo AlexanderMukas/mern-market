@@ -32,6 +32,8 @@ import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 
 import OrderListScreen from './screens/OrderListScreen';
+
+// import SearchBox from './components/SearchBox';
 // import OrderEditScreen from './screens/OrderEditScreen';
 
 const App = () => {
@@ -65,7 +67,8 @@ const App = () => {
             <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
 
             <Route path='/admin/orderlist' component={OrderListScreen} />
-            {/* <Route path='/admin/order/:id/edit' component={OrderEditScreen} /> */}
+            
+            <Route path='/search/:keyword' component={HomeScreen} />
 
             <Route path='/' component={HomeScreen} exact />
 
