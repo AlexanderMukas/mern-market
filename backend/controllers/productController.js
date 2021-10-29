@@ -15,7 +15,7 @@ const getProducts = asyncHandler( async (req, res) => {
     } : {}
     // output : keyword = { name : {$regex : ''amazon , $options}}
 
-    const products = await Product.find( {} );
+    const products = await Product.find( { ...keyword } );
     if(products){
         res.json(products)
     } else {

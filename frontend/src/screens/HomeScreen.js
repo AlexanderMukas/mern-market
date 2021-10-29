@@ -27,7 +27,7 @@ const HomeScreen = ( {match} ) => {
 
         dispatch( listProducts(keyword) );
 
-    }, [dispatch]);
+    }, [dispatch, keyword]);
 
     return (
         <>
