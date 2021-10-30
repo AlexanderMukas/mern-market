@@ -6,6 +6,13 @@ import Product from '../models/productModel.js';
 // @access      Public
 const getProducts = asyncHandler( async (req, res) => {
 
+    // PAGINATIION functionality
+    const pageSize = 2
+    const page = Number(req.query.pageNumber) || 1  // ?pageNumber=1 default
+
+
+
+
     // with 'keyword' QUERY : /api/products?keyword=amazon
     const keyword = req.query.keyword ? {
         name: {
@@ -15,16 +22,18 @@ const getProducts = asyncHandler( async (req, res) => {
     } : {}
     // output : keyword = { name : {$regex : ''amazon , $options}}
 
-    const products = await Product.find( { ...keyword } );
+    const count = await Product.count({ ...keyword })
+
+
+    const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
+
     if(products){
-        res.json(products)
+        res.json({ products, page, pages: Math.ceil(count / pageSize)})
     } else {
         res.status(404);
         throw new Error('Products not found!.');
     }
 
-    // res.status(401)
-    // throw new Error('Not Authorized')
 });
 
 
