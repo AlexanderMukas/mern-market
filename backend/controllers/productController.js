@@ -7,11 +7,8 @@ import Product from '../models/productModel.js';
 const getProducts = asyncHandler( async (req, res) => {
 
     // PAGINATIION functionality
-    const pageSize = 2
+    const pageSize = 3
     const page = Number(req.query.pageNumber) || 1  // ?pageNumber=1 default
-
-
-
 
     // with 'keyword' QUERY : /api/products?keyword=amazon
     const keyword = req.query.keyword ? {
@@ -22,7 +19,7 @@ const getProducts = asyncHandler( async (req, res) => {
     } : {}
     // output : keyword = { name : {$regex : ''amazon , $options}}
 
-    const count = await Product.count({ ...keyword })
+    const count = await Product.countDocuments({ ...keyword })
 
 
     const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))

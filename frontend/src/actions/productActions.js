@@ -24,8 +24,8 @@ import {
 } from '../constants/productConstants.js';
 
 
-
-export const listProducts = (keyword = '') => async (dispatch) => {
+// add keyword and pageNumber
+export const listProducts = (keyword = '', pageNumber = '') => async (dispatch) => {
     try {
         //for spinner "LOADING..."
         dispatch({ type: PRODUCT_LIST_REQUEST })
@@ -34,7 +34,7 @@ export const listProducts = (keyword = '') => async (dispatch) => {
         // const { data } = await axios.get('/api/products');
 
         // with keyword
-        const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+        const { data } = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`);
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,

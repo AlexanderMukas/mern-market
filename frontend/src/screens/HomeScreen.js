@@ -19,13 +19,16 @@ const HomeScreen = ( {match} ) => {
     // keyword = "Sony"
     const keyword = match.params.keyword; 
 
+    // PAGINATION
+    const pageNumber = match.params.pageNumber || 1; 
+
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList);
     const { loading, error, products } = productList;
 
     useEffect( async () => {
 
-        dispatch( listProducts(keyword) );
+        dispatch( listProducts(keyword, pageNumber) );
 
     }, [dispatch, keyword]);
 
