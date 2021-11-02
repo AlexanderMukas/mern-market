@@ -26,14 +26,11 @@ const HomeScreen = ( {match} ) => {
     const dispatch = useDispatch();
 
     const productList = useSelector(state => state.productList);
-
     // const { loading, error, products } = productList;
     const { loading, error, products, page, pages } = productList;
 
     useEffect( async () => {
-
         dispatch( listProducts(keyword, pageNumber) );
-
     }, [dispatch, keyword, pageNumber]);
 
     return (
@@ -45,7 +42,6 @@ const HomeScreen = ( {match} ) => {
                 <Message variant='danger'>{error}</Message>
             ) : (
                 <>
-    
                     <Row>
                         {products.map( product => (
                             <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
@@ -63,7 +59,6 @@ const HomeScreen = ( {match} ) => {
                 </>
                 )
             }
-            
         </>
     )
 }
