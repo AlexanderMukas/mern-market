@@ -7,7 +7,7 @@ import Product from '../models/productModel.js';
 const getProducts = asyncHandler( async (req, res) => {
 
     // PAGINATIION functionality
-    const pageSize = 3
+    const pageSize = 2
     const page = Number(req.query.pageNumber) || 1  // ?pageNumber=1 default
 
     // with 'keyword' QUERY : /api/products?keyword=amazon

@@ -68,7 +68,7 @@ const App = () => {
 
             <Route path='/admin/orderlist' component={OrderListScreen} />
             
-            <Route path='/search/:keyword' component={HomeScreen} />
+            <Route path='/search/:keyword' component={HomeScreen} exact />
 
                         {/* pagination and search */}
             <Route path='/page/:pageNumber' component={HomeScreen} exact />
