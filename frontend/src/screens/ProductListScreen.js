@@ -11,6 +11,7 @@ import { listProducts, deleteProduct, createProduct } from '../actions/productAc
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 const ProductListScreen = ( {history, match} ) => {
+    const pageNumber = match.params.pageNumber || 1;
     
     const dispatch = useDispatch();
 
@@ -45,10 +46,11 @@ const ProductListScreen = ( {history, match} ) => {
         if(successCreate) {
             history.push(`/admin/product/${createdProduct._id}/edit`)
         } else {
-            dispatch(listProducts());
+            // keyword and pageNumber
+            dispatch(listProducts('', pageNumber));
         }
        
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct ])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct, pageNumber ])
 
 
     const deleteHandler = (id) => {
@@ -130,7 +132,7 @@ const ProductListScreen = ( {history, match} ) => {
                     ))}
                   </tbody>
               </Table>
-              <Paginate pages={pages} page={page} />
+              <Paginate pages={pages} page={page} isAdmin={true}/>
               </>
           )} 
         </>
