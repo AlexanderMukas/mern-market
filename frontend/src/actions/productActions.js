@@ -21,6 +21,8 @@ import {
     PRODUCT_CREATE_REVIEW_FAIL,
     PRODUCT_CREATE_REVIEW_RESET,
     PRODUCT_TOP_REQUEST,
+    PRODUCT_TOP_SUCCESS,
+    PRODUCT_TOP_FAIL,
     // PRODUCT_CREATE_RESET,
 } from '../constants/productConstants.js';
 
@@ -205,12 +207,12 @@ export const getTopProducts = () => async (dispatch) => {
         const { data } = await axios.get('/api/products/top');
 
         dispatch({
-            type: PRODUCT_LIST_SUCCESS,
+            type: PRODUCT_TOP_SUCCESS,
             payload: data
         })
     } catch (error) {
         dispatch({
-            type: PRODUCT_LIST_FAIL,
+            type: PRODUCT_TOP_FAIL,
             payload: 
                 error.response && error.response.data.message 
                     ? error.response.data.message 
