@@ -14,13 +14,20 @@ const ProductCarousel = () => {
 
     useEffect( () => {
         dispatch( getTopProducts() );
-    })
+    }, [dispatch])
     
-    return (
-        <div>
-            
-        </div>
-    )
+    return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> 
+        : (
+            <Carousel pause='hover' className='bg-dark'>
+                {products.map( product => (
+                    <Carousel.Item key={product._id}>
+                        <Link to={`/api/products/${product._id}`}>
+                            <Image src={product.image} alt={product.name} fluid />
+                        </Link>
+                    </Carousel.Item>
+                ))}
+            </Carousel>
+        )
 }
 
 export default ProductCarousel
