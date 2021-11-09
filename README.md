@@ -6,6 +6,7 @@ React.js
 Redux
 react-bootstrap
 axios
+react-helmet
 
 Back End :
 
