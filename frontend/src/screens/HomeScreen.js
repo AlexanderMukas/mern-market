@@ -14,6 +14,9 @@ import ProductCarousel from '../components/ProductCarousel';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions'
 
+// REACT-HELMET
+import { Helmet } from 'react-helmet';
+
 const HomeScreen = ( {match} ) => {
 
     // CHEACK THE KEYWORD
@@ -36,6 +39,13 @@ const HomeScreen = ( {match} ) => {
 
     return (
         <>  
+            <Helmet>
+                <title>Welcome to eMarket | HOME</title>
+                <meta name='description' content='We sell the best products for cheap' />
+                <meta name='keywords' content='electronics, buy electronics, cheap devices' />
+
+            </Helmet>
+
             {!keyword && <ProductCarousel /> }
             <h1>Latest products</h1>
             {loading ? (
