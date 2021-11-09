@@ -1,7 +1,7 @@
 // rafce + tab
 
 import React, {useEffect} from 'react';
-
+import { Link } from 'react-router-dom';
 import { Row, Col, Pagination } from 'react-bootstrap';
 
 import Product from '../components/Product';
@@ -48,10 +48,10 @@ const HomeScreen = ( {match} ) => {
             </Helmet> */}
 
             {/* <Meta title='xxx' description='' keywords='' /> */}
-            
+
             <Meta />
 
-            {!keyword && <ProductCarousel /> }
+            {!keyword ? <ProductCarousel /> : <Link to='/' className='btn btn-light' >Go Back</Link> }
             <h1>Latest products</h1>
             {loading ? (
                 <Loader />
