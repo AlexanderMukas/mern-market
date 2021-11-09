@@ -5,6 +5,7 @@ import Rating from '../components/Rating';
 // import axios from 'axios';
 // using axios
 // import products from '../products';
+import Meta from '../components/Meta';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -75,6 +76,7 @@ const ProductScreen = ( {history, match} ) => {
             {loading ? ( <Loader /> ) : error ? (<Message variant='danger'>{error}</Message>)
                         : (
                   <>
+                    <Meta title={product.name} />
                     <Row>
 
                         <Col md={6}>
