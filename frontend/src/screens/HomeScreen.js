@@ -15,7 +15,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions'
 
 // REACT-HELMET
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
+import Meta from '../components/Meta';
 
 const HomeScreen = ( {match} ) => {
 
@@ -39,12 +40,16 @@ const HomeScreen = ( {match} ) => {
 
     return (
         <>  
-            <Helmet>
+            {/* <Helmet>
                 <title>Welcome to eMarket | HOME</title>
                 <meta name='description' content='We sell the best products for cheap' />
                 <meta name='keywords' content='electronics, buy electronics, cheap devices' />
 
-            </Helmet>
+            </Helmet> */}
+
+            {/* <Meta title='xxx' description='' keywords='' /> */}
+            
+            <Meta />
 
             {!keyword && <ProductCarousel /> }
             <h1>Latest products</h1>
