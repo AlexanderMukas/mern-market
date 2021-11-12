@@ -1,13 +1,10 @@
 import asyncHandler from 'express-async-handler';
-
-//MongoDB models
 import Order from '../models/orderModel.js';
 
 // @desc        Create new order
 // @route       POST /api/orders
 // @access      Private
 const addOrderItems = asyncHandler( async (req, res) => {
-    
     // get data from request url
     const { 
         orderItems,
@@ -47,9 +44,7 @@ const addOrderItems = asyncHandler( async (req, res) => {
 // @route       GET /api/orders/:id
 // @access      Private
 const getOrderById = asyncHandler( async (req, res) => {
-    
     const order = await Order.findById(req.params.id).populate('user', 'name email');
-    // console.log(order);
 
     if(order){
         res.json(order);
