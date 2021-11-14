@@ -5,7 +5,6 @@ import Order from '../models/orderModel.js';
 // @route       POST /api/orders
 // @access      Private
 const addOrderItems = asyncHandler( async (req, res) => {
-    // get data from request url
     const { 
         orderItems,
         shippingAddress, 
@@ -59,10 +58,8 @@ const getOrderById = asyncHandler( async (req, res) => {
 // @route       PUT /api/orders/:id/pay
 // @access      Private
 const updateOrderToPaid = asyncHandler( async (req, res) => {
-    
     //PUT = UPDATE
     const order = await Order.findById(req.params.id);
-    // console.log(order);
 
     if(order){
         order.isPaid = true;
@@ -78,7 +75,6 @@ const updateOrderToPaid = asyncHandler( async (req, res) => {
 
         //save in MongoDB this staf
         const updatedOrder = await order.save();
-
         res.json(updatedOrder);
 
     } else {
