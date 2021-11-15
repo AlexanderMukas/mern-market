@@ -1,3 +1,11 @@
+
+//simple middleware
+// app.use( (req, res, next) => {
+//     // console.log('HELLO');
+//     console.log(req.originalUrl);
+//     next();
+// });
+
 //validate the token
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';

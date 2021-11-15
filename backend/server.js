@@ -33,16 +33,6 @@ if (process.env.NODE_ENV === 'development') {
 
 // body like json
 app.use(express.json())
-
-
-//simple middleware
-// app.use( (req, res, next) => {
-//     // console.log('HELLO');
-//     console.log(req.originalUrl);
-//     next();
-// });
-
-
 app.get('/', (req, res) => {
     res.send('API in backend (EXPRESS.JS) is running...')
 });
