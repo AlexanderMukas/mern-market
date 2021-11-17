@@ -1,8 +1,6 @@
 import express from 'express';
-// add colors.js
 import colors from 'colors';
 import morgan from 'morgan';
-
 import path from 'path';
 
 // this MongoDB connection
@@ -37,7 +35,7 @@ app.get('/', (req, res) => {
     res.send('API in backend (EXPRESS.JS) is running...')
 });
 
-
+// big route PARTS
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
@@ -53,7 +51,6 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 // errorMiddleware
 app.use(notFound);
 app.use(errorHandler);
-
 
 const PORT = process.env.PORT || 5000 ;
 app.listen( PORT, console.log(`Server running in <<${process.env.NODE_ENV} mode>> on PORT: ${PORT}`.yellow.bold) );

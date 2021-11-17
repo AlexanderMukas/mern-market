@@ -20,8 +20,6 @@ const getProducts = asyncHandler( async (req, res) => {
     // output : keyword = { name : {$regex : ''amazon , $options}}
 
     const count = await Product.countDocuments({ ...keyword })
-
-
     const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
 
     if(products){
