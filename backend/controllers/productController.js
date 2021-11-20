@@ -109,7 +109,7 @@ const createProduct = asyncHandler( async (req, res) => {
 
     } else {
         res.status(400)
-        throw new Error('Invalid product data')
+        throw new Error('Invalid product data!')
     }
     
 });
@@ -122,7 +122,9 @@ const createProductReview = asyncHandler( async (req, res) => {
     const { rating, comment } = req.body;
 
     const product = await Product.findById(req.params.id);
-     
+    
+    // One user can create one review for one product.
+    
     if(product) {
         const alreadyReviewed = product.reviews.find( 
             (r) => r.user.toString() === req.user._id.toString()

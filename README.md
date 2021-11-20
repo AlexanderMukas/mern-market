@@ -1,14 +1,14 @@
 # Project of e-commerce - "mern-market"
 
-Front End : 
+*** Front End : ***
 
 React.js
 Redux
 react-bootstrap
-axios
+axios (queries from BACKEND API)
 react-helmet
 
-Back End :
+*** Back End : ***
 
 Node.js
 nodemon (autorefresh run - dev)
