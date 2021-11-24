@@ -17,8 +17,8 @@ express
 express-async-handler
 bcryptjs (passwords) 
 colors
-dotenv
-jsonwebtoken
-mongoose
+dotenv (environment const)
+jsonwebtoken (auth with barer token)
+mongoose (driver for MongoDB)
 multer (download files on server)
-morgan - http request logger middleware
+morgan (http request logger middleware)
