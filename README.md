@@ -3,14 +3,15 @@
 *** Front End : ***
 
 React.js
-Redux (const -> reducer -> action)
+Redux (consts -> reducer -> action)
 react-bootstrap
+react-router-dom
 axios (queries from BACKEND API)
 react-helmet (override head tag in screens)
 
 *** Back End : ***
 
-Node.js
+Node.js 
 nodemon (autorefresh run - dev)
 concurrently (dev)
 express
