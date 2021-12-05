@@ -11,10 +11,10 @@ react-helmet (override head tag in screens)
 
 *** Back End : ***
 
-Node.js_
-nodemon (autorefresh run - dev)_
-concurrently (dev)_
-express_
+Node.js__
+nodemon (autorefresh run - dev)__
+concurrently (dev)__
+express__
 express-async-handler
 bcryptjs (passwords) 
 colors
