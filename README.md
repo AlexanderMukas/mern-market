@@ -2,12 +2,12 @@
 
 *** Front End : ***
 
-React.js
-Redux (consts -> reducer -> action)
-react-bootstrap
-react-router-dom
-axios (queries from BACKEND API)
-react-helmet (override head tag in screens)
+React.js  
+Redux (consts -> reducer -> action)  
+react-bootstrap  
+react-router-dom  
+axios (queries from BACKEND API)  
+react-helmet (override head tag in screens)  
 
 *** Back End : ***
 
